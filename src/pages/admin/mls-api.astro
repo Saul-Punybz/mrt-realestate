@@ -1,0 +1,315 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="MLS APIs">
+  <div class="max-w-4xl">
+    <!-- Info Banner -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+      <div class="flex gap-3">
+        <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-blue-700 text-sm">
+          Configura las APIs de MLS para obtener listados de propiedades en tiempo real.
+          Puedes usar Bridge API, SimplyRETS, o ambos.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bridge API -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl text-navy-900">Bridge API</h2>
+            <p class="text-gray-500 text-sm">bridgedataoutput.com</p>
+          </div>
+        </div>
+        <span id="bridge-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          No configurado
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            API URL
+          </label>
+          <input
+            type="text"
+            id="bridge-url"
+            placeholder="https://api.bridgedataoutput.com/api/v2"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none bg-gray-50"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: BRIDGE_API_URL</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            API Key
+          </label>
+          <input
+            type="password"
+            id="bridge-key"
+            placeholder="Tu API Key de Bridge"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: BRIDGE_API_KEY</p>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Dataset ID
+          </label>
+          <input
+            type="text"
+            id="bridge-dataset"
+            placeholder="ID del dataset (ej: PR_MLS)"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: BRIDGE_DATASET_ID</p>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            id="save-bridge"
+            class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+          >
+            Guardar Configuración
+          </button>
+          <button
+            id="test-bridge"
+            class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+          >
+            Probar Conexión
+          </button>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <h3 class="font-medium text-navy-900 mb-3">Cómo obtener credenciales:</h3>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-600">
+          <li>Visita <a href="https://bridgedataoutput.com" target="_blank" class="text-gold-600 hover:underline">bridgedataoutput.com</a></li>
+          <li>Crea una cuenta o inicia sesión</li>
+          <li>Solicita acceso al feed de MLS de Puerto Rico</li>
+          <li>Una vez aprobado, obtén tu API Key y Dataset ID desde el dashboard</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- SimplyRETS -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl text-navy-900">SimplyRETS</h2>
+            <p class="text-gray-500 text-sm">simplyrets.com</p>
+          </div>
+        </div>
+        <span id="simplyrets-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          No configurado
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            API URL
+          </label>
+          <input
+            type="text"
+            id="simplyrets-url"
+            placeholder="https://api.simplyrets.com"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none bg-gray-50"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: SIMPLYRETS_API_URL</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Usuario
+            </label>
+            <input
+              type="text"
+              id="simplyrets-user"
+              placeholder="Tu usuario"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+            <p class="text-xs text-gray-500 mt-1">Variable: SIMPLYRETS_USERNAME</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              id="simplyrets-pass"
+              placeholder="Tu contraseña"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+            <p class="text-xs text-gray-500 mt-1">Variable: SIMPLYRETS_PASSWORD</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            id="save-simplyrets"
+            class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+          >
+            Guardar Configuración
+          </button>
+          <button
+            id="test-simplyrets"
+            class="border border-gray-300 text-gray-700 px-6 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+          >
+            Probar Conexión
+          </button>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <h3 class="font-medium text-navy-900 mb-3">Cómo obtener credenciales:</h3>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-600">
+          <li>Visita <a href="https://simplyrets.com" target="_blank" class="text-gold-600 hover:underline">simplyrets.com</a></li>
+          <li>Solicita una demo o crea una cuenta</li>
+          <li>Conecta tu MLS de Puerto Rico</li>
+          <li>Obtén tus credenciales de API desde el dashboard</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Vercel Environment Variables -->
+    <div class="bg-navy-900 rounded-xl p-6 text-white">
+      <h3 class="font-serif text-lg mb-4">Variables para Vercel</h3>
+      <p class="text-gray-300 text-sm mb-4">
+        Copia estas variables a tu proyecto en Vercel (Settings → Environment Variables):
+      </p>
+      <pre class="bg-navy-800 p-4 rounded-lg text-sm overflow-x-auto"><code id="env-vars"># Bridge API
+BRIDGE_API_URL=https://api.bridgedataoutput.com/api/v2
+BRIDGE_API_KEY=tu_api_key_aqui
+BRIDGE_DATASET_ID=tu_dataset_id
+
+# SimplyRETS
+SIMPLYRETS_API_URL=https://api.simplyrets.com
+SIMPLYRETS_USERNAME=tu_usuario
+SIMPLYRETS_PASSWORD=tu_password</code></pre>
+      <button
+        id="copy-env"
+        class="mt-4 bg-gold-500 text-navy-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gold-600 transition-colors"
+      >
+        Copiar Variables
+      </button>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  // Load saved values
+  function loadSavedValues() {
+    const bridgeUrl = localStorage.getItem('mrt_bridge_url');
+    const bridgeKey = localStorage.getItem('mrt_bridge_key');
+    const bridgeDataset = localStorage.getItem('mrt_bridge_dataset');
+    const simplyUrl = localStorage.getItem('mrt_simplyrets_url');
+    const simplyUser = localStorage.getItem('mrt_simplyrets_user');
+    const simplyPass = localStorage.getItem('mrt_simplyrets_pass');
+
+    if (bridgeUrl) (document.getElementById('bridge-url') as HTMLInputElement).value = bridgeUrl;
+    if (bridgeKey) (document.getElementById('bridge-key') as HTMLInputElement).value = bridgeKey;
+    if (bridgeDataset) (document.getElementById('bridge-dataset') as HTMLInputElement).value = bridgeDataset;
+    if (simplyUrl) (document.getElementById('simplyrets-url') as HTMLInputElement).value = simplyUrl;
+    if (simplyUser) (document.getElementById('simplyrets-user') as HTMLInputElement).value = simplyUser;
+    if (simplyPass) (document.getElementById('simplyrets-pass') as HTMLInputElement).value = simplyPass;
+
+    // Update status
+    if (bridgeKey) {
+      const status = document.getElementById('bridge-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+    if (simplyUser && simplyPass) {
+      const status = document.getElementById('simplyrets-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+  }
+
+  // Save Bridge config
+  document.getElementById('save-bridge')?.addEventListener('click', () => {
+    const url = (document.getElementById('bridge-url') as HTMLInputElement).value;
+    const key = (document.getElementById('bridge-key') as HTMLInputElement).value;
+    const dataset = (document.getElementById('bridge-dataset') as HTMLInputElement).value;
+
+    localStorage.setItem('mrt_bridge_url', url);
+    localStorage.setItem('mrt_bridge_key', key);
+    localStorage.setItem('mrt_bridge_dataset', dataset);
+
+    if (key) {
+      localStorage.setItem('mrt_mls_configured', 'true');
+      const status = document.getElementById('bridge-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    alert('Configuración guardada. Recuerda agregar estas variables en Vercel.');
+  });
+
+  // Save SimplyRETS config
+  document.getElementById('save-simplyrets')?.addEventListener('click', () => {
+    const url = (document.getElementById('simplyrets-url') as HTMLInputElement).value;
+    const user = (document.getElementById('simplyrets-user') as HTMLInputElement).value;
+    const pass = (document.getElementById('simplyrets-pass') as HTMLInputElement).value;
+
+    localStorage.setItem('mrt_simplyrets_url', url);
+    localStorage.setItem('mrt_simplyrets_user', user);
+    localStorage.setItem('mrt_simplyrets_pass', pass);
+
+    if (user && pass) {
+      localStorage.setItem('mrt_mls_configured', 'true');
+      const status = document.getElementById('simplyrets-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    alert('Configuración guardada. Recuerda agregar estas variables en Vercel.');
+  });
+
+  // Copy env vars
+  document.getElementById('copy-env')?.addEventListener('click', () => {
+    const envVars = document.getElementById('env-vars')?.textContent || '';
+    navigator.clipboard.writeText(envVars);
+    alert('Variables copiadas al portapapeles');
+  });
+
+  // Test connections (placeholder)
+  document.getElementById('test-bridge')?.addEventListener('click', () => {
+    alert('Para probar la conexión, despliega en Vercel con las variables configuradas.');
+  });
+
+  document.getElementById('test-simplyrets')?.addEventListener('click', () => {
+    alert('Para probar la conexión, despliega en Vercel con las variables configuradas.');
+  });
+
+  loadSavedValues();
+</script>

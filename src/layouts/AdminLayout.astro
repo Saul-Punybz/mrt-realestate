@@ -1,0 +1,235 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/admin', label: 'Dashboard', icon: 'dashboard' },
+  { href: '/admin/mls-api', label: 'MLS APIs', icon: 'api' },
+  { href: '/admin/email', label: 'Email (SendGrid)', icon: 'email' },
+  { href: '/admin/google', label: 'Google Services', icon: 'google' },
+  { href: '/admin/settings', label: 'Configuración', icon: 'settings' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} | Admin - MRT Real Estate</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <div class="flex min-h-screen" id="admin-app">
+      <!-- Sidebar -->
+      <aside class="w-64 bg-navy-900 text-white flex-shrink-0 fixed h-full">
+        <div class="p-6 border-b border-navy-700">
+          <a href="/admin" class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gold-500 rounded-lg flex items-center justify-center">
+              <span class="font-serif font-bold text-navy-900 text-lg">M</span>
+            </div>
+            <div>
+              <div class="font-serif font-bold text-lg">MRT Admin</div>
+              <div class="text-xs text-gray-400">Panel de Control</div>
+            </div>
+          </a>
+        </div>
+
+        <nav class="p-4">
+          <ul class="space-y-1">
+            {navItems.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                    currentPath === item.href || (item.href !== '/admin' && currentPath.startsWith(item.href))
+                      ? 'bg-gold-500 text-navy-900'
+                      : 'text-gray-300 hover:bg-navy-800 hover:text-white'
+                  }`}
+                >
+                  {item.icon === 'dashboard' && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                  )}
+                  {item.icon === 'api' && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {item.icon === 'email' && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {item.icon === 'google' && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  )}
+                  {item.icon === 'settings' && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  )}
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-navy-700">
+          <a
+            href="/"
+            class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-white transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+            </svg>
+            Volver al Sitio
+          </a>
+          <button
+            id="logout-btn"
+            class="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:text-red-300 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Cerrar Sesión
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 ml-64">
+        <!-- Top Bar -->
+        <header class="bg-white shadow-sm px-8 py-4 flex items-center justify-between">
+          <h1 class="font-serif text-2xl text-navy-900">{title}</h1>
+          <div class="flex items-center gap-4">
+            <span class="text-sm text-gray-500">Admin</span>
+            <div class="w-10 h-10 bg-navy-900 rounded-full flex items-center justify-center">
+              <span class="text-white font-medium">A</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="p-8">
+          <slot />
+        </div>
+      </main>
+    </div>
+
+    <!-- Login Modal (shown when not authenticated) -->
+    <div id="login-modal" class="fixed inset-0 bg-navy-900 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-xl shadow-2xl p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 bg-gold-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <span class="font-serif font-bold text-navy-900 text-2xl">M</span>
+          </div>
+          <h2 class="font-serif text-2xl text-navy-900">Admin Login</h2>
+          <p class="text-gray-500 mt-2">Ingresa tus credenciales para acceder</p>
+        </div>
+
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+            <input
+              type="text"
+              id="login-username"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+              placeholder="admin"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+            <input
+              type="password"
+              id="login-password"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+              placeholder="••••••••"
+            />
+          </div>
+          <div id="login-error" class="text-red-500 text-sm hidden"></div>
+          <button
+            type="submit"
+            class="w-full bg-gold-500 text-navy-900 py-3 rounded-lg font-semibold hover:bg-gold-600 transition-colors"
+          >
+            Iniciar Sesión
+          </button>
+        </form>
+
+        <p class="text-center text-gray-400 text-xs mt-6">
+          Credenciales por defecto: admin / admin123<br />
+          Cambia la contraseña en Configuración
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Simple authentication system
+      const STORAGE_KEY = 'mrt_admin_auth';
+      const DEFAULT_USER = 'admin';
+      const DEFAULT_PASS = 'admin123';
+
+      function checkAuth() {
+        const auth = sessionStorage.getItem(STORAGE_KEY);
+        return auth === 'true';
+      }
+
+      function showLogin() {
+        document.getElementById('login-modal')?.classList.remove('hidden');
+        document.getElementById('admin-app')?.classList.add('opacity-0', 'pointer-events-none');
+      }
+
+      function hideLogin() {
+        document.getElementById('login-modal')?.classList.add('hidden');
+        document.getElementById('admin-app')?.classList.remove('opacity-0', 'pointer-events-none');
+      }
+
+      function logout() {
+        sessionStorage.removeItem(STORAGE_KEY);
+        showLogin();
+      }
+
+      // Check authentication on load
+      if (!checkAuth()) {
+        showLogin();
+      }
+
+      // Login form handler
+      document.getElementById('login-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = (document.getElementById('login-username') as HTMLInputElement)?.value;
+        const password = (document.getElementById('login-password') as HTMLInputElement)?.value;
+        const errorEl = document.getElementById('login-error');
+
+        // Check stored credentials or default
+        const storedUser = localStorage.getItem('mrt_admin_user') || DEFAULT_USER;
+        const storedPass = localStorage.getItem('mrt_admin_pass') || DEFAULT_PASS;
+
+        if (username === storedUser && password === storedPass) {
+          sessionStorage.setItem(STORAGE_KEY, 'true');
+          hideLogin();
+        } else {
+          if (errorEl) {
+            errorEl.textContent = 'Credenciales incorrectas';
+            errorEl.classList.remove('hidden');
+          }
+        }
+      });
+
+      // Logout handler
+      document.getElementById('logout-btn')?.addEventListener('click', logout);
+    </script>
+  </body>
+</html>

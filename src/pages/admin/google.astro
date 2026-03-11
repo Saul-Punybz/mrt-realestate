@@ -1,0 +1,300 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Google Services">
+  <div class="max-w-4xl">
+    <!-- Info Banner -->
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+      <div class="flex gap-3">
+        <svg class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-blue-700 text-sm">
+          Configura los servicios de Google para mapas interactivos y análisis de tráfico.
+          Todos los servicios son opcionales pero recomendados.
+        </p>
+      </div>
+    </div>
+
+    <!-- Google Maps API -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl text-navy-900">Google Maps API</h2>
+            <p class="text-gray-500 text-sm">Mapas en páginas de propiedades</p>
+          </div>
+        </div>
+        <span id="maps-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          No configurado
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            API Key
+          </label>
+          <input
+            type="password"
+            id="maps-key"
+            placeholder="AIzaSy..."
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: PUBLIC_GOOGLE_MAPS_KEY</p>
+        </div>
+
+        <button
+          id="save-maps"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Guardar Configuración
+        </button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <h3 class="font-medium text-navy-900 mb-3">Cómo obtener la API Key:</h3>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-600">
+          <li>Ve a <a href="https://console.cloud.google.com" target="_blank" class="text-gold-600 hover:underline">Google Cloud Console</a></li>
+          <li>Crea un proyecto nuevo o selecciona uno existente</li>
+          <li>Ve a "APIs & Services" → "Enable APIs"</li>
+          <li>Habilita: Maps JavaScript API, Places API, Geocoding API</li>
+          <li>Ve a "Credentials" → "Create Credentials" → "API Key"</li>
+          <li>Restringe la key a tu dominio para mayor seguridad</li>
+        </ol>
+      </div>
+
+      <!-- Note about current map -->
+      <div class="mt-4 p-4 bg-gray-50 rounded-lg">
+        <p class="text-sm text-gray-600">
+          <strong>Nota:</strong> Actualmente el sitio usa OpenStreetMap como fallback gratuito.
+          Al configurar Google Maps, los mapas se actualizarán automáticamente con más funcionalidades.
+        </p>
+      </div>
+    </div>
+
+    <!-- Google Analytics -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl text-navy-900">Google Analytics 4</h2>
+            <p class="text-gray-500 text-sm">Análisis de tráfico y conversiones</p>
+          </div>
+        </div>
+        <span id="analytics-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          No configurado
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Measurement ID
+          </label>
+          <input
+            type="text"
+            id="analytics-id"
+            placeholder="G-XXXXXXXXXX"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: PUBLIC_GA_MEASUREMENT_ID</p>
+        </div>
+
+        <button
+          id="save-analytics"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Guardar Configuración
+        </button>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 pt-6 border-t border-gray-200">
+        <h3 class="font-medium text-navy-900 mb-3">Cómo obtener el Measurement ID:</h3>
+        <ol class="list-decimal list-inside space-y-2 text-sm text-gray-600">
+          <li>Ve a <a href="https://analytics.google.com" target="_blank" class="text-gold-600 hover:underline">Google Analytics</a></li>
+          <li>Crea una cuenta si no tienes una</li>
+          <li>Crea una nueva propiedad GA4</li>
+          <li>En Admin → Data Streams → Web, crea un stream</li>
+          <li>Copia el "Measurement ID" (empieza con G-)</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Google Tag Manager (Optional) -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <div class="flex items-start justify-between mb-6">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-xl text-navy-900">Google Tag Manager</h2>
+            <p class="text-gray-500 text-sm">Gestión avanzada de tags (opcional)</p>
+          </div>
+        </div>
+        <span id="gtm-status" class="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+          Opcional
+        </span>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Container ID
+          </label>
+          <input
+            type="text"
+            id="gtm-id"
+            placeholder="GTM-XXXXXXX"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+          <p class="text-xs text-gray-500 mt-1">Variable: PUBLIC_GTM_ID</p>
+        </div>
+
+        <button
+          id="save-gtm"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Guardar Configuración
+        </button>
+      </div>
+    </div>
+
+    <!-- Vercel Environment Variables -->
+    <div class="bg-navy-900 rounded-xl p-6 text-white">
+      <h3 class="font-serif text-lg mb-4">Variables para Vercel</h3>
+      <p class="text-gray-300 text-sm mb-4">
+        Copia estas variables a tu proyecto en Vercel:
+      </p>
+      <pre class="bg-navy-800 p-4 rounded-lg text-sm overflow-x-auto"><code id="env-vars"># Google Maps
+PUBLIC_GOOGLE_MAPS_KEY=tu_maps_api_key
+
+# Google Analytics
+PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
+# Google Tag Manager (opcional)
+PUBLIC_GTM_ID=GTM-XXXXXXX</code></pre>
+      <button
+        id="copy-env"
+        class="mt-4 bg-gold-500 text-navy-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gold-600 transition-colors"
+      >
+        Copiar Variables
+      </button>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  // Load saved values
+  function loadSavedValues() {
+    const mapsKey = localStorage.getItem('mrt_maps_key');
+    const analyticsId = localStorage.getItem('mrt_analytics_id');
+    const gtmId = localStorage.getItem('mrt_gtm_id');
+
+    if (mapsKey) (document.getElementById('maps-key') as HTMLInputElement).value = mapsKey;
+    if (analyticsId) (document.getElementById('analytics-id') as HTMLInputElement).value = analyticsId;
+    if (gtmId) (document.getElementById('gtm-id') as HTMLInputElement).value = gtmId;
+
+    if (mapsKey) {
+      const status = document.getElementById('maps-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+    if (analyticsId) {
+      const status = document.getElementById('analytics-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+    if (gtmId) {
+      const status = document.getElementById('gtm-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    // Mark Google as configured if any service is set
+    if (mapsKey || analyticsId) {
+      localStorage.setItem('mrt_google_configured', 'true');
+    }
+  }
+
+  // Save Maps config
+  document.getElementById('save-maps')?.addEventListener('click', () => {
+    const key = (document.getElementById('maps-key') as HTMLInputElement).value;
+    localStorage.setItem('mrt_maps_key', key);
+
+    if (key) {
+      localStorage.setItem('mrt_google_configured', 'true');
+      const status = document.getElementById('maps-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    alert('Configuración guardada. Recuerda agregar esta variable en Vercel.');
+  });
+
+  // Save Analytics config
+  document.getElementById('save-analytics')?.addEventListener('click', () => {
+    const id = (document.getElementById('analytics-id') as HTMLInputElement).value;
+    localStorage.setItem('mrt_analytics_id', id);
+
+    if (id) {
+      localStorage.setItem('mrt_google_configured', 'true');
+      const status = document.getElementById('analytics-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    alert('Configuración guardada. Recuerda agregar esta variable en Vercel.');
+  });
+
+  // Save GTM config
+  document.getElementById('save-gtm')?.addEventListener('click', () => {
+    const id = (document.getElementById('gtm-id') as HTMLInputElement).value;
+    localStorage.setItem('mrt_gtm_id', id);
+
+    if (id) {
+      const status = document.getElementById('gtm-status');
+      if (status) {
+        status.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+        status.textContent = 'Configurado';
+      }
+    }
+
+    alert('Configuración guardada. Recuerda agregar esta variable en Vercel.');
+  });
+
+  // Copy env vars
+  document.getElementById('copy-env')?.addEventListener('click', () => {
+    const envVars = document.getElementById('env-vars')?.textContent || '';
+    navigator.clipboard.writeText(envVars);
+    alert('Variables copiadas al portapapeles');
+  });
+
+  loadSavedValues();
+</script>

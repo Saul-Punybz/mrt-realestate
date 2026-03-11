@@ -1,0 +1,900 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Blog posts data
+const blogPosts: Record<string, {
+  title: string;
+  excerpt: string;
+  image: string;
+  category: string;
+  date: string;
+  readTime: string;
+  author: string;
+  content: string;
+}> = {
+  'guia-comprar-casa-puerto-rico': {
+    title: 'Guía Completa para Comprar Casa en Puerto Rico',
+    excerpt: 'Todo lo que necesitas saber antes de comprar tu primera propiedad en la isla del encanto.',
+    image: '/images/listings/ready-house-1.jpg',
+    category: 'Guías',
+    date: '2024-12-15',
+    readTime: '10 min',
+    author: 'Marilyn Rivera',
+    content: `
+## Introducción
+
+Comprar una casa en Puerto Rico es una de las decisiones más importantes que tomarás en tu vida. Ya sea que busques tu primera vivienda, una propiedad de inversión, o tu hogar de retiro en el paraíso caribeño, esta guía te ayudará a navegar el proceso con confianza.
+
+## 1. Determina tu Presupuesto
+
+Antes de comenzar a buscar propiedades, es crucial establecer un presupuesto realista. Considera:
+
+- **Ingresos mensuales**: Los prestamistas generalmente aprueban hipotecas donde el pago mensual no excede el 28-35% de tus ingresos.
+- **Ahorros para el pago inicial**: En Puerto Rico, puedes encontrar opciones desde 3% hasta 20% de pago inicial.
+- **Costos de cierre**: Presupuesta entre 2-5% del precio de la propiedad para gastos de cierre.
+- **Reserva de emergencia**: Mantén al menos 3-6 meses de gastos como reserva.
+
+## 2. Obtén Pre-aprobación Hipotecaria
+
+La pre-aprobación te da ventaja competitiva:
+
+- Demuestra a los vendedores que eres un comprador serio
+- Te ayuda a entender exactamente cuánto puedes gastar
+- Acelera el proceso de cierre una vez encuentres tu casa
+
+### Documentos necesarios:
+- Últimos 2 años de planillas (taxes)
+- Talones de pago recientes
+- Estados de cuenta bancarios
+- Historial de empleo
+
+## 3. Elige la Ubicación Correcta
+
+Puerto Rico ofrece diversas opciones:
+
+### San Juan Metro
+- Condado, Ocean Park: Vida urbana, playas, restaurantes
+- Guaynabo: Familias, escuelas privadas, comunidades cerradas
+- Carolina/Isla Verde: Cerca del aeropuerto, playas hermosas
+
+### Norte
+- Dorado: Comunidades de lujo, campos de golf
+- Vega Alta/Vega Baja: Más asequible, buenas playas
+
+### Oeste
+- Rincón: Surfing, comunidad expatriada
+- Aguadilla: Playas espectaculares, más económico
+
+### Sur
+- Ponce: Segunda ciudad, arquitectura histórica
+- Guánica/Lajas: Bahía bioluminiscente, tranquilidad
+
+## 4. El Proceso de Búsqueda
+
+### Trabaja con un agente de bienes raíces
+Un buen agente:
+- Conoce el mercado local
+- Tiene acceso a listados del MLS
+- Negocia en tu nombre
+- Te guía durante todo el proceso
+
+### Qué buscar en cada visita:
+- Estado estructural de la propiedad
+- Sistemas eléctricos y plomería
+- Potencial de inundación (zona FEMA)
+- Condición del techo (especialmente importante en PR)
+
+## 5. Hacer una Oferta
+
+Cuando encuentres la casa perfecta:
+
+1. **Analiza comparables**: Tu agente te mostrará ventas recientes similares
+2. **Considera el tiempo en el mercado**: Propiedades con más tiempo pueden tener más margen de negociación
+3. **Incluye contingencias**: Inspección, financiamiento, tasación
+
+## 6. Inspección y Due Diligence
+
+La inspección es CRUCIAL en Puerto Rico:
+
+- **Inspección estructural**: Busca daños de huracanes anteriores
+- **Inspección de termitas**: Muy común en el Caribe
+- **Certificación de la propiedad**: Verifica que todo esté en orden legal
+- **Estudio de título**: Asegura que no haya gravámenes
+
+## 7. Proceso de Cierre
+
+El cierre en Puerto Rico típicamente toma 30-45 días e incluye:
+
+- Revisión final de documentos
+- Firma ante notario
+- Transferencia de fondos
+- Registro de la escritura
+
+## Consejos Finales
+
+1. **No te apresures**: Toma el tiempo necesario para tomar la decisión correcta
+2. **Considera el mantenimiento**: Las casas en el trópico requieren mantenimiento especial
+3. **Seguro de huracanes**: Es obligatorio y puede ser costoso
+4. **Comunidades con portón**: Ofrecen seguridad adicional
+
+---
+
+¿Listo para comenzar tu búsqueda? [Contáctanos](/contact) y te ayudaremos a encontrar tu hogar ideal en Puerto Rico.
+    `,
+  },
+  'beneficios-fiscales-act-60': {
+    title: 'Beneficios Fiscales del Act 60 para Inversionistas',
+    excerpt: 'Descubre cómo el Act 60 puede reducir tus impuestos y por qué Puerto Rico es un destino atractivo para inversionistas.',
+    image: '/images/listings/penthouse-guaynabo-1.jpg',
+    category: 'Inversiones',
+    date: '2024-12-10',
+    readTime: '8 min',
+    author: 'Marilyn Rivera',
+    content: `
+## ¿Qué es el Act 60?
+
+El Act 60, también conocido como el Código de Incentivos de Puerto Rico, consolidó varios programas de incentivos fiscales anteriores, incluyendo los populares Act 20 y Act 22. Este programa hace de Puerto Rico uno de los destinos más atractivos fiscalmente en el mundo para inversionistas y empresarios.
+
+## Beneficios Principales
+
+### Para Inversionistas Individuales (antes Act 22)
+
+- **0% impuesto sobre ganancias de capital** en inversiones realizadas después de convertirte en residente
+- **0% impuesto sobre dividendos e intereses** de fuentes puertorriqueñas
+- Sin impuesto federal sobre ingresos de fuente puertorriqueña
+
+### Para Empresas de Exportación de Servicios (antes Act 20)
+
+- **4% tasa corporativa** fija sobre ingresos de servicios exportados
+- **0% impuesto sobre dividendos** distribuidos de ganancias del Act 60
+- **75% exención en impuestos municipales**
+
+## Requisitos de Elegibilidad
+
+### Residencia Bona Fide
+
+Para calificar, debes:
+
+1. **Pasar al menos 183 días al año** en Puerto Rico
+2. **Establecer tu hogar principal** en la isla
+3. **No tener un "tax home"** fuera de Puerto Rico
+4. **Demostrar lazos más cercanos** con Puerto Rico que con cualquier otro lugar
+
+### Requisitos Adicionales
+
+- Comprar o alquilar propiedad residencial en Puerto Rico
+- No haber sido residente de PR en los 15 años anteriores (para algunos beneficios)
+- Hacer una donación anual a organizaciones sin fines de lucro locales
+
+## Impacto en Bienes Raíces
+
+El Act 60 ha tenido un impacto significativo en el mercado inmobiliario:
+
+### Aumento de Demanda
+- Más compradores de alto poder adquisitivo
+- Mayor demanda de propiedades de lujo
+- Desarrollo de nuevos proyectos premium
+
+### Zonas Más Beneficiadas
+- Dorado Beach
+- Condado/Ocean Park
+- Palmas del Mar
+- Old San Juan
+
+## Proceso de Aplicación
+
+1. **Contratar un abogado especializado** en incentivos fiscales
+2. **Preparar documentación** de residencia y elegibilidad
+3. **Someter aplicación** al Departamento de Desarrollo Económico
+4. **Obtener decreto** de exención (usualmente 60-90 días)
+5. **Cumplir con requisitos** de reporte anual
+
+## Costos Asociados
+
+- **Tarifa de aplicación**: $750 - $5,000
+- **Donación anual requerida**: $10,000+
+- **Honorarios legales**: $5,000 - $15,000
+- **Reporte anual**: $300 - $1,000
+
+## Consideraciones Importantes
+
+### Ventajas
+- Ahorro fiscal significativo
+- Calidad de vida caribeña
+- Sin necesidad de renunciar a ciudadanía americana
+- Vuelos directos a EE.UU. continental
+
+### Desventajas
+- Costo de vida puede ser alto en zonas premium
+- Huracanes y consideraciones climáticas
+- Infraestructura puede ser inconsistente
+- Requisitos de presencia física estrictos
+
+## Conclusión
+
+El Act 60 representa una oportunidad única para inversionistas que buscan optimizar su situación fiscal mientras disfrutan del estilo de vida caribeño. Sin embargo, es crucial trabajar con profesionales calificados para asegurar cumplimiento total.
+
+---
+
+¿Interesado en explorar propiedades para tu reubicación Act 60? [Contáctanos](/contact) para ver opciones que califican.
+    `,
+  },
+  'mejores-zonas-vivir-puerto-rico': {
+    title: 'Las 10 Mejores Zonas para Vivir en Puerto Rico',
+    excerpt: 'Desde Dorado hasta Rincón, exploramos las comunidades más deseables de la isla.',
+    image: '/images/listings/family-carrizales-1.jpg',
+    category: 'Lifestyle',
+    date: '2024-12-05',
+    readTime: '12 min',
+    author: 'Marilyn Rivera',
+    content: `
+## Explorando las Mejores Comunidades de Puerto Rico
+
+Puerto Rico ofrece una diversidad increíble de vecindarios, cada uno con su propio carácter y atractivo. Aquí te presentamos las 10 mejores zonas para vivir en la isla.
+
+## 1. Dorado
+
+**Ideal para**: Familias adineradas, golfistas, amantes del lujo
+
+### Características:
+- Comunidades exclusivas como Dorado Beach y Dorado Reef
+- Campos de golf de clase mundial
+- Playas privadas
+- Excelentes restaurantes
+
+### Precio promedio: $800,000 - $5,000,000+
+
+## 2. Condado, San Juan
+
+**Ideal para**: Profesionales jóvenes, vida urbana
+
+### Características:
+- Vida nocturna vibrante
+- Restaurantes de primera
+- Playa a pasos
+- Caminar a todo
+
+### Precio promedio: $400,000 - $2,000,000
+
+## 3. Guaynabo
+
+**Ideal para**: Familias con niños
+
+### Características:
+- Mejores escuelas privadas
+- Comunidades cerradas
+- Centros comerciales
+- Fácil acceso a San Juan
+
+### Precio promedio: $350,000 - $1,500,000
+
+## 4. Palmas del Mar, Humacao
+
+**Ideal para**: Retirados, golfistas, amantes de la naturaleza
+
+### Características:
+- Resort community
+- Marina y golf
+- Ambiente tranquilo
+- Comunidad activa
+
+### Precio promedio: $300,000 - $1,200,000
+
+## 5. Rincón
+
+**Ideal para**: Surfistas, artistas, bohemios
+
+### Características:
+- Mejores olas de surfing
+- Puestas de sol espectaculares
+- Comunidad expatriada
+- Estilo de vida relajado
+
+### Precio promedio: $250,000 - $800,000
+
+## 6. Old San Juan
+
+**Ideal para**: Amantes de historia, cultura
+
+### Características:
+- Arquitectura colonial
+- Historia rica
+- Vida nocturna
+- Caminar a todo
+
+### Precio promedio: $300,000 - $1,500,000
+
+## 7. Ocean Park, San Juan
+
+**Ideal para**: Familias, perros, vida de playa
+
+### Características:
+- Playa dog-friendly
+- Comunidad unida
+- Casas con carácter
+- Cerca de Condado
+
+### Precio promedio: $500,000 - $2,000,000
+
+## 8. Isla Verde, Carolina
+
+**Ideal para**: Viajeros frecuentes, vida de playa
+
+### Características:
+- 5 minutos del aeropuerto
+- Playa hermosa
+- Hoteles y casinos
+- Condominios modernos
+
+### Precio promedio: $250,000 - $800,000
+
+## 9. Aguadilla
+
+**Ideal para**: Familias, presupuesto moderado
+
+### Características:
+- Playas espectaculares
+- Costo de vida menor
+- Aeropuerto cercano
+- Comunidad creciente
+
+### Precio promedio: $150,000 - $500,000
+
+## 10. Ponce
+
+**Ideal para**: Cultura, historia, precios accesibles
+
+### Características:
+- Segunda ciudad de PR
+- Arquitectura impresionante
+- Museos y cultura
+- Precios más bajos
+
+### Precio promedio: $100,000 - $400,000
+
+## Factores a Considerar
+
+### Seguridad
+- Comunidades cerradas ofrecen más seguridad
+- Investiga estadísticas del área
+
+### Escuelas
+- Guaynabo y San Juan tienen las mejores opciones privadas
+- Considera la distancia al trabajo
+
+### Acceso
+- Cercanía al aeropuerto
+- Tráfico en horas pico
+- Acceso a hospitales
+
+### Clima
+- Costa norte: más lluvia
+- Costa sur: más seco
+- Montañas: más fresco
+
+---
+
+¿Quieres explorar propiedades en alguna de estas zonas? [Contáctanos](/contact) y te mostramos las mejores opciones disponibles.
+    `,
+  },
+  'proceso-hipoteca-puerto-rico': {
+    title: 'Cómo Obtener una Hipoteca en Puerto Rico: Paso a Paso',
+    excerpt: 'Aprende sobre los requisitos, tipos de préstamos y cómo prepararte para obtener la mejor tasa.',
+    image: '/images/listings/remodeled-ciales-1.jpg',
+    category: 'Financiamiento',
+    date: '2024-11-28',
+    readTime: '9 min',
+    author: 'Marilyn Rivera',
+    content: `
+## Entendiendo el Proceso Hipotecario en Puerto Rico
+
+Obtener una hipoteca puede parecer complicado, pero con la preparación adecuada, el proceso es manejable. Esta guía te llevará paso a paso por todo lo que necesitas saber.
+
+## Tipos de Préstamos Disponibles
+
+### Préstamos Convencionales
+- Pago inicial: 3-20%
+- Mejor tasa con 20% down
+- Requiere buen crédito (680+)
+
+### FHA (Federal Housing Administration)
+- Pago inicial: 3.5%
+- Crédito más flexible (580+)
+- Ideal para primeros compradores
+
+### VA (Veterans Affairs)
+- 0% pago inicial
+- Solo para veteranos
+- Sin PMI
+
+### USDA
+- 0% pago inicial
+- Áreas rurales elegibles
+- Límites de ingreso aplican
+
+## Requisitos Básicos
+
+### Documentación Necesaria
+
+1. **Identificación**
+   - Licencia de conducir o ID
+   - Seguro Social
+
+2. **Prueba de Ingresos**
+   - Últimos 2 años de planillas
+   - 2 meses de pay stubs
+   - Cartas de empleo
+
+3. **Información Financiera**
+   - 2 meses de estados bancarios
+   - Documentación de otras deudas
+   - Historial de renta (si aplica)
+
+### Requisitos de Crédito
+
+| Tipo de Préstamo | Puntaje Mínimo |
+|-----------------|----------------|
+| Convencional    | 620-680        |
+| FHA             | 580            |
+| VA              | Sin mínimo*    |
+
+*Prestamistas pueden requerir mínimos propios
+
+## El Proceso Paso a Paso
+
+### 1. Pre-calificación (15 minutos)
+- Estimado inicial basado en información verbal
+- No afecta tu crédito
+- Te da una idea del presupuesto
+
+### 2. Pre-aprobación (1-3 días)
+- Revisión formal de documentos
+- Verificación de crédito
+- Carta de pre-aprobación
+
+### 3. Búsqueda de Propiedad
+- Con tu carta de pre-aprobación
+- Dentro de tu presupuesto aprobado
+
+### 4. Solicitud Formal
+- Una vez aceptada tu oferta
+- Documentación completa requerida
+
+### 5. Procesamiento (2-3 semanas)
+- Verificación de toda la información
+- Tasación de la propiedad
+- Título y seguro
+
+### 6. Underwriting (1-2 semanas)
+- Revisión final del préstamo
+- Posibles condiciones adicionales
+
+### 7. Cierre (1 día)
+- Firma de documentos
+- Fondos transferidos
+- ¡Llaves en mano!
+
+## Costos a Considerar
+
+### Costos de Cierre (2-5% del precio)
+- Originación del préstamo
+- Tasación
+- Seguro de título
+- Honorarios de abogado
+- Impuestos prepagados
+
+### Costos Mensuales
+- Principal e interés
+- Impuestos sobre la propiedad
+- Seguro del hogar
+- Seguro contra inundaciones (si aplica)
+- PMI (si < 20% down)
+
+## Tips para Mejor Tasa
+
+1. **Mejora tu crédito** antes de aplicar
+2. **Ahorra más** para el pago inicial
+3. **Compara ofertas** de múltiples prestamistas
+4. **Considera puntos** para bajar la tasa
+5. **Timing**: Las tasas fluctúan
+
+## Errores Comunes a Evitar
+
+- No cambies de trabajo durante el proceso
+- No hagas compras grandes a crédito
+- No abras nuevas tarjetas de crédito
+- No deposites efectivo sin documentar
+- No mientas en la aplicación
+
+---
+
+¿Necesitas ayuda con el financiamiento? [Contáctanos](/contact) y te conectamos con prestamistas de confianza.
+    `,
+  },
+  'invertir-propiedades-airbnb': {
+    title: 'Invertir en Propiedades para Airbnb en Puerto Rico',
+    excerpt: 'Análisis del mercado de alquileres vacacionales y cómo maximizar tu retorno de inversión.',
+    image: '/images/listings/rental-caguana-1.jpg',
+    category: 'Inversiones',
+    date: '2024-11-20',
+    readTime: '11 min',
+    author: 'Marilyn Rivera',
+    content: `
+## El Auge del Alquiler Vacacional en Puerto Rico
+
+Puerto Rico se ha convertido en uno de los destinos más populares para Airbnb en el Caribe. Con su combinación de playas, cultura, y la conveniencia de no necesitar pasaporte para ciudadanos americanos, la demanda de alquileres vacacionales sigue creciendo.
+
+## Por Qué Puerto Rico es Ideal para Airbnb
+
+### Ventajas del Mercado
+
+1. **Turismo en crecimiento**: Récord de visitantes año tras año
+2. **Sin pasaporte**: Para ciudadanos de EE.UU.
+3. **Vuelos directos**: Desde todas las ciudades principales
+4. **Temporada alta extendida**: Diciembre a Abril
+5. **Eventos y convenciones**: Atraen visitantes todo el año
+
+### Mejores Zonas para Airbnb
+
+| Zona | Ocupación Promedio | Tarifa Diaria |
+|------|-------------------|---------------|
+| Condado | 75-85% | $150-300 |
+| Rincón | 65-80% | $120-250 |
+| Vieques | 70-85% | $180-400 |
+| Old San Juan | 80-90% | $130-280 |
+| Isla Verde | 70-80% | $100-200 |
+
+## Análisis Financiero
+
+### Ejemplo: Apartamento en Condado
+
+**Inversión Inicial:**
+- Precio de compra: $350,000
+- Pago inicial (20%): $70,000
+- Remodelación/muebles: $25,000
+- **Total inversión**: $95,000
+
+**Ingresos Proyectados:**
+- Tarifa promedio: $200/noche
+- Ocupación: 75%
+- Ingreso bruto anual: $54,750
+
+**Gastos Anuales:**
+- Hipoteca: $18,000
+- HOA: $4,800
+- Utilities: $3,600
+- Limpieza: $6,000
+- Mantenimiento: $2,000
+- Seguro: $2,400
+- Airbnb fees (3%): $1,640
+- **Total gastos**: $38,440
+
+**Flujo de Caja Neto**: $16,310/año
+**Cash-on-Cash Return**: 17.2%
+
+## Regulaciones Importantes
+
+### Licencias Requeridas
+
+1. **Licencia de Alquiler a Corto Plazo** del Departamento de Hacienda
+2. **Registro en DACO** (Oficina del Consumidor)
+3. **Permiso de uso** del municipio (algunos requieren)
+4. **Aprobación de la asociación** (si aplica)
+
+### Impuestos
+
+- **Room Tax**: 7% del ingreso
+- **IVU**: 11.5% (puede aplicar)
+- **Impuesto sobre ingresos**: Según tu situación
+
+## Tips para Maximizar Retorno
+
+### 1. Diseño y Presentación
+- Fotos profesionales
+- Decoración instagrameable
+- Comodidades modernas
+- Toques locales
+
+### 2. Operaciones Eficientes
+- Check-in automatizado
+- Limpieza profesional
+- Mantenimiento preventivo
+- Property manager local
+
+### 3. Marketing
+- Listado optimizado
+- Respuestas rápidas
+- Reviews excelentes
+- Presencia multi-plataforma
+
+### 4. Pricing Dinámico
+- Ajusta según demanda
+- Precios de temporada
+- Eventos especiales
+- Descuentos por estadía larga
+
+## Desafíos a Considerar
+
+### Estacionalidad
+- Temporada baja: Mayo-Noviembre
+- Huracanes: Junio-Noviembre
+- Estrategia para meses lentos
+
+### Competencia
+- Mercado cada vez más saturado
+- Diferenciación es clave
+- Servicio excepcional necesario
+
+### Manejo a Distancia
+- Property manager confiable
+- Sistemas automatizados
+- Comunicación efectiva
+
+## Propiedades Ideales
+
+### Características Ganadoras
+- 1-2 habitaciones (más demanda)
+- Cerca de la playa
+- Estacionamiento incluido
+- A/C eficiente
+- WiFi rápido
+- Cocina equipada
+
+### Evitar
+- Propiedades sin A/C
+- Zonas sin transporte
+- Edificios con restricciones
+- Unidades sin vista/balcón
+
+---
+
+¿Buscando una propiedad de inversión para Airbnb? [Contáctanos](/contact) y te mostramos las mejores oportunidades del mercado.
+    `,
+  },
+  'mercado-inmobiliario-2024': {
+    title: 'Estado del Mercado Inmobiliario de Puerto Rico 2024',
+    excerpt: 'Análisis de tendencias, precios y proyecciones del mercado de bienes raíces.',
+    image: '/images/listings/solar-piuertos-1.jpg',
+    category: 'Mercado',
+    date: '2024-11-15',
+    readTime: '7 min',
+    author: 'Marilyn Rivera',
+    content: `
+## Resumen del Mercado 2024
+
+El mercado inmobiliario de Puerto Rico continúa mostrando fortaleza en 2024, impulsado por la migración de estadounidenses continentales, los incentivos fiscales del Act 60, y la recuperación post-pandemia del turismo.
+
+## Tendencias Principales
+
+### 1. Precios en Aumento
+
+Los precios han aumentado consistentemente:
+
+- **2020-2024**: Aumento acumulado del 35-45%
+- **Zonas premium**: Incrementos de hasta 60%
+- **Proyección 2025**: 5-10% adicional
+
+### 2. Inventario Limitado
+
+La oferta sigue siendo un desafío:
+
+- Inventario históricamente bajo
+- Nuevas construcciones limitadas
+- Alta demanda en zonas codiciadas
+
+### 3. Migración Continua
+
+El flujo de nuevos residentes continúa:
+
+- Beneficiarios del Act 60
+- Trabajadores remotos
+- Retirados buscando clima y beneficios
+
+## Análisis por Zona
+
+### Área Metro de San Juan
+
+| Métrica | 2023 | 2024 | Cambio |
+|---------|------|------|--------|
+| Precio mediano | $285K | $310K | +8.8% |
+| Días en mercado | 45 | 38 | -15.5% |
+| Ventas cerradas | 4,200 | 4,850 | +15.5% |
+
+### Dorado/Costa Norte
+
+- Demanda extremadamente alta
+- Precios premium sostenidos
+- Nuevos desarrollos de lujo
+
+### Oeste (Rincón, Aguadilla)
+
+- Crecimiento acelerado
+- Popularidad con expatriados
+- Más asequible que metro
+
+### Sur (Ponce)
+
+- Mercado más estable
+- Oportunidades de valor
+- Revitalización urbana
+
+## Factores Económicos
+
+### Positivos
+- Tasas de interés estabilizándose
+- Economía local mejorando
+- Turismo récord
+- Incentivos fiscales activos
+
+### Desafíos
+- Costos de construcción altos
+- Escasez de mano de obra
+- Seguros costosos
+- Infraestructura eléctrica
+
+## Proyecciones 2025
+
+### Mercado Residencial
+- Precios: +5-8% proyectado
+- Inventario: Ligero aumento esperado
+- Demanda: Continúa fuerte
+
+### Mercado de Lujo
+- Segmento más activo
+- Compradores internacionales
+- Propiedades $1M+ muy demandadas
+
+### Inversiones
+- Multifamiliares en demanda
+- Airbnb sigue siendo rentable
+- Desarrollos comerciales selectivos
+
+## Recomendaciones
+
+### Para Compradores
+1. Actúa rápido en propiedades deseables
+2. Ten pre-aprobación lista
+3. Considera zonas emergentes
+4. Presupuesta para competencia
+
+### Para Vendedores
+1. Momento excelente para vender
+2. Pricing estratégico importante
+3. Preparación de propiedad clave
+4. Marketing profesional necesario
+
+### Para Inversionistas
+1. Analiza cash flow cuidadosamente
+2. Considera costos de seguros
+3. Diversifica por zona
+4. Piensa a largo plazo
+
+## Conclusión
+
+El mercado inmobiliario de Puerto Rico en 2024 ofrece oportunidades tanto para compradores como vendedores. La clave está en trabajar con profesionales que entiendan las dinámicas locales y puedan guiarte hacia las mejores decisiones.
+
+---
+
+¿Quieres aprovechar las oportunidades del mercado actual? [Contáctanos](/contact) para una consulta personalizada.
+    `,
+  },
+};
+
+const { slug } = Astro.params;
+const post = blogPosts[slug || ''];
+
+if (!post) {
+  return Astro.redirect('/blog');
+}
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('es-PR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'guia-comprar-casa-puerto-rico' } },
+    { params: { slug: 'beneficios-fiscales-act-60' } },
+    { params: { slug: 'mejores-zonas-vivir-puerto-rico' } },
+    { params: { slug: 'proceso-hipoteca-puerto-rico' } },
+    { params: { slug: 'invertir-propiedades-airbnb' } },
+    { params: { slug: 'mercado-inmobiliario-2024' } },
+  ];
+}
+---
+
+<BaseLayout title={post.title} description={post.excerpt}>
+  <!-- Hero -->
+  <section class="relative h-[40vh] min-h-[300px] -mt-20 pt-20">
+    <img src={post.image} alt={post.title} class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent"></div>
+  </section>
+
+  <!-- Article -->
+  <article class="py-12 px-4">
+    <div class="container mx-auto max-w-3xl">
+      <!-- Meta -->
+      <div class="flex flex-wrap items-center gap-4 mb-6 -mt-20 relative z-10">
+        <span class="bg-gold-500 text-navy-900 px-4 py-1 rounded-full text-sm font-bold">
+          {post.category}
+        </span>
+        <span class="text-white/80 text-sm">{post.readTime} de lectura</span>
+        <span class="text-white/80 text-sm">{formatDate(post.date)}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-8 relative z-10">
+        {post.title}
+      </h1>
+
+      <!-- Author -->
+      <div class="flex items-center gap-4 mb-12 pb-8 border-b">
+        <div class="w-12 h-12 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+          <span class="text-navy-900 font-serif font-bold text-lg">MR</span>
+        </div>
+        <div>
+          <div class="font-medium text-navy-900">{post.author}</div>
+          <div class="text-gray-500 text-sm">Agente Principal, MRT Real Estate</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-navy-900 prose-a:text-gold-600 prose-strong:text-navy-900">
+        <Fragment set:html={post.content.replace(/\n/g, '<br>').replace(/## /g, '</p><h2>').replace(/### /g, '</p><h3>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n- /g, '</li><li>').replace(/<li>/g, '<ul><li>').replace(/<\/li>(?!<li>)/g, '</li></ul>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')} />
+      </div>
+
+      <!-- Share -->
+      <div class="mt-12 pt-8 border-t">
+        <div class="flex items-center justify-between">
+          <span class="font-medium text-navy-900">Comparte este artículo:</span>
+          <div class="flex gap-3">
+            <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-navy-900 text-white rounded-full flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Blog -->
+      <div class="mt-8">
+        <a href="/blog" class="inline-flex items-center gap-2 text-gold-600 hover:text-navy-900 font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Volver al Blog
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA -->
+  <section class="py-16 px-4 bg-navy-900">
+    <div class="container mx-auto max-w-2xl text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">
+        ¿Listo para Dar el Siguiente Paso?
+      </h2>
+      <p class="text-white/70 mb-8">
+        Permítenos ayudarte a encontrar la propiedad perfecta en Puerto Rico.
+      </p>
+      <a href="/contact" class="inline-block bg-gold-500 text-navy-900 px-8 py-3 rounded-lg font-semibold hover:bg-white transition-colors">
+        Contáctanos Hoy
+      </a>
+    </div>
+  </section>
+</BaseLayout>

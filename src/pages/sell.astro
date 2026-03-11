@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/forms/ContactForm';
+---
+
+<BaseLayout
+  title="Vende tu Propiedad"
+  description="Vende tu propiedad en Puerto Rico con MRT Real Estate. Obtenemos el mejor precio para tu hogar."
+>
+  <!-- Hero Section -->
+  <section class="relative h-[50vh] min-h-[400px] -mt-20 pt-20 overflow-hidden">
+    <img
+      src="/images/listings/remodeled-ciales-1.jpg"
+      alt="Vende tu propiedad con MRT Real Estate"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/60 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <span class="text-gold-500 font-semibold uppercase tracking-wider text-sm">
+          Servicios de Venta
+        </span>
+        <h1 class="font-serif text-4xl md:text-5xl text-white mt-2 mb-4">
+          Vende tu Propiedad al<br />
+          <span class="text-gold-500">Mejor Precio</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-16 px-4">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+          Nuestro Proceso
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl text-navy-900 mt-2 mb-4">
+          Cómo Vendemos tu Propiedad
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Un proceso simple y efectivo para obtener el mejor resultado
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="bg-white rounded-xl shadow-lg p-6 relative z-10">
+            <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mb-4">
+              1
+            </div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-2">Evaluación Gratuita</h3>
+            <p class="text-gray-600 text-sm">
+              Analizamos tu propiedad y el mercado para determinar el precio óptimo de venta.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 right-0 w-1/2 h-0.5 bg-gold-200 transform translate-x-1/2"></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative">
+          <div class="bg-white rounded-xl shadow-lg p-6 relative z-10">
+            <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mb-4">
+              2
+            </div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-2">Marketing Profesional</h3>
+            <p class="text-gray-600 text-sm">
+              Fotos profesionales, videos, tours virtuales y publicación en múltiples plataformas.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 right-0 w-1/2 h-0.5 bg-gold-200 transform translate-x-1/2"></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative">
+          <div class="bg-white rounded-xl shadow-lg p-6 relative z-10">
+            <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mb-4">
+              3
+            </div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-2">Negociación Experta</h3>
+            <p class="text-gray-600 text-sm">
+              Manejamos todas las ofertas y negociamos para obtener el mejor precio para ti.
+            </p>
+          </div>
+          <div class="hidden md:block absolute top-1/2 right-0 w-1/2 h-0.5 bg-gold-200 transform translate-x-1/2"></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative">
+          <div class="bg-white rounded-xl shadow-lg p-6 relative z-10">
+            <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mb-4">
+              4
+            </div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-2">Cierre Exitoso</h3>
+            <p class="text-gray-600 text-sm">
+              Te acompañamos durante todo el proceso legal hasta la firma final.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+            ¿Por Qué Nosotros?
+          </span>
+          <h2 class="font-serif text-3xl md:text-4xl text-navy-900 mt-2 mb-6">
+            Ventajas de Vender con MRT Real Estate
+          </h2>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy-900 mb-1">Mejor Precio</h3>
+                <p class="text-gray-600 text-sm">
+                  Nuestras estrategias de marketing y negociación aseguran el mejor precio para tu propiedad.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy-900 mb-1">Venta Rápida</h3>
+                <p class="text-gray-600 text-sm">
+                  Nuestras propiedades se venden en promedio 30% más rápido que el mercado.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy-900 mb-1">Marketing Premium</h3>
+                <p class="text-gray-600 text-sm">
+                  Fotografía profesional, tours virtuales 3D, y presencia en todas las plataformas principales.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-navy-900 mb-1">Sin Compromisos</h3>
+                <p class="text-gray-600 text-sm">
+                  Evaluación gratuita y sin obligación. Solo pagas cuando vendemos tu propiedad.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-8">
+          <h3 class="font-serif text-2xl text-navy-900 mb-2">
+            Solicita tu Evaluación Gratuita
+          </h3>
+          <p class="text-gray-600 mb-6">
+            Completa el formulario y un agente te contactará para evaluar tu propiedad.
+          </p>
+          <ContactForm client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 px-4 bg-navy-900">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="font-serif text-4xl md:text-5xl text-gold-500 font-bold mb-2">95%</div>
+          <div class="text-white">Tasa de Venta</div>
+        </div>
+        <div>
+          <div class="font-serif text-4xl md:text-5xl text-gold-500 font-bold mb-2">45</div>
+          <div class="text-white">Días Promedio</div>
+        </div>
+        <div>
+          <div class="font-serif text-4xl md:text-5xl text-gold-500 font-bold mb-2">98%</div>
+          <div class="text-white">Del Precio Pedido</div>
+        </div>
+        <div>
+          <div class="font-serif text-4xl md:text-5xl text-gold-500 font-bold mb-2">500+</div>
+          <div class="text-white">Propiedades Vendidas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 px-4">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+          Testimonios
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl text-navy-900 mt-2">
+          Lo Que Dicen Nuestros Clientes
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <div class="flex gap-1 text-gold-500 mb-4">
+            {[...Array(5)].map(() => (
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-gray-600 mb-4 italic">
+            "Vendieron mi casa en solo 3 semanas y por encima del precio que pedí.
+            El equipo fue profesional de principio a fin."
+          </p>
+          <div class="font-semibold text-navy-900">María González</div>
+          <div class="text-gray-500 text-sm">Dorado, PR</div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <div class="flex gap-1 text-gold-500 mb-4">
+            {[...Array(5)].map(() => (
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-gray-600 mb-4 italic">
+            "La fotografía profesional y el tour virtual hicieron toda la diferencia.
+            Recibimos múltiples ofertas en la primera semana."
+          </p>
+          <div class="font-semibold text-navy-900">Carlos Mendez</div>
+          <div class="text-gray-500 text-sm">Arecibo, PR</div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <div class="flex gap-1 text-gold-500 mb-4">
+            {[...Array(5)].map(() => (
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-gray-600 mb-4 italic">
+            "Excelente comunicación durante todo el proceso. Siempre me mantuvieron
+            informada y respondieron todas mis preguntas."
+          </p>
+          <div class="font-semibold text-navy-900">Ana Rivera</div>
+          <div class="text-gray-500 text-sm">Guaynabo, PR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

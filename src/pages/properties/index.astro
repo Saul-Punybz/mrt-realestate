@@ -1,0 +1,345 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PropertyGrid from '../../components/properties/PropertyGrid';
+import PropertyFilters from '../../components/properties/PropertyFilters';
+import { activeListings, rentalListings, listings } from '../../data/listings';
+
+const totalActive = activeListings.length;
+const totalRentals = rentalListings.length;
+const priceRange = {
+  min: Math.min(...activeListings.map(l => l.price)),
+  max: Math.max(...activeListings.map(l => l.price)),
+};
+---
+
+<BaseLayout
+  title="Propiedades en Venta — MRT Real Estate"
+  description="Explora nuestros listings exclusivos de propiedades en Puerto Rico. Casas, terrenos, fincas, comercial y más en Arecibo, Utuado, Ciales, Lares y toda la isla."
+>
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 py-20 px-4 -mt-20 pt-32 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-gold-500 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+    </div>
+    <div class="container mx-auto relative z-10">
+      <div class="max-w-3xl">
+        <span class="inline-block text-gold-500 font-semibold uppercase tracking-wider text-sm mb-3">
+          Listings Exclusivos
+        </span>
+        <h1 class="font-serif text-4xl md:text-6xl text-white mb-4">
+          Propiedades en <span class="text-gold-500">Puerto Rico</span>
+        </h1>
+        <p class="text-white/70 text-lg md:text-xl mb-8 max-w-2xl">
+          Descubre nuestra selección curada de propiedades — desde terrenos y fincas hasta casas y edificios comerciales
+        </p>
+        <!-- Quick Stats -->
+        <div class="flex flex-wrap gap-6">
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+            <div class="text-gold-500 font-serif text-3xl font-bold">{totalActive}</div>
+            <div class="text-white/60 text-sm mt-1">Propiedades Activas</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+            <div class="text-gold-500 font-serif text-3xl font-bold">${priceRange.min.toLocaleString()}</div>
+            <div class="text-white/60 text-sm mt-1">Desde</div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+            <div class="text-gold-500 font-serif text-3xl font-bold">${priceRange.max.toLocaleString()}</div>
+            <div class="text-white/60 text-sm mt-1">Hasta</div>
+          </div>
+          {totalRentals > 0 && (
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-4 border border-white/10">
+              <div class="text-gold-500 font-serif text-3xl font-bold">{totalRentals}</div>
+              <div class="text-white/60 text-sm mt-1">Para Alquilar</div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exclusive Listings Grid -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+          Selección Curada
+        </span>
+        <h2 class="font-serif text-3xl md:text-4xl text-navy-900 mt-2 mb-4">
+          Listings Exclusivos de MRT
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Propiedades seleccionadas por nuestro equipo con fotos, descripciones detalladas y precios verificados
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filters -->
+        <aside class="lg:w-80 flex-shrink-0">
+          <div class="lg:sticky lg:top-24">
+            <PropertyFilters client:load />
+          </div>
+        </aside>
+
+        <!-- Property Grid -->
+        <div class="flex-1">
+          <PropertyGrid client:load columns={3} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rental Section -->
+  {rentalListings.length > 0 && (
+    <section class="py-16 px-4 bg-gray-50">
+      <div class="container mx-auto">
+        <div class="text-center mb-12">
+          <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+            Alquileres
+          </span>
+          <h2 class="font-serif text-3xl md:text-4xl text-navy-900 mt-2 mb-4">
+            Propiedades para Alquilar
+          </h2>
+        </div>
+        <div class="max-w-4xl mx-auto">
+          {rentalListings.map((rental) => (
+            <a href={`/properties/${rental.slug}`} class="group block bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden">
+              <div class="flex flex-col md:flex-row">
+                <div class="md:w-80 h-64 md:h-auto flex-shrink-0 overflow-hidden">
+                  <img
+                    src={rental.images[0]}
+                    alt={rental.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div class="p-8 flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="bg-gold-500/10 text-gold-700 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                      Alquiler
+                    </span>
+                    <span class="text-gray-400 text-sm">{rental.listingId}</span>
+                  </div>
+                  <h3 class="font-serif text-2xl text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                    {rental.title}
+                  </h3>
+                  <p class="text-gray-500 mb-4 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    {rental.address.city}, PR
+                  </p>
+                  <p class="text-gray-600 text-sm mb-6 line-clamp-2">{rental.description}</p>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4 text-gray-500 text-sm">
+                      {rental.bedrooms > 0 && <span>{rental.bedrooms} Hab</span>}
+                      {rental.bathrooms > 0 && <span>{rental.bathrooms} Banos</span>}
+                    </div>
+                    <div class="font-serif text-2xl font-bold text-gold-600">
+                      ${rental.price.toLocaleString()}<span class="text-sm font-sans font-normal text-gray-400">/mes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- MLS Map Search Portal -->
+  <section class="relative" id="mls-section">
+    <!-- Branded Top Bar -->
+    <div class="bg-navy-900 border-b border-gold-500/30">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between py-4 gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <span class="text-navy-900 font-serif font-bold text-sm">MRT</span>
+            </div>
+            <div>
+              <h2 class="text-white font-serif text-lg font-semibold">Buscar Propiedades en el Mapa</h2>
+              <p class="text-white/50 text-xs">MLS Puerto Rico — Mapa interactivo con 500+ listings</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+              <span class="text-white/50 text-xs">En vivo</span>
+            </div>
+            <div class="hidden md:flex items-center gap-3">
+              <span class="text-white/40 text-xs border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <svg class="w-3 h-3 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
+                Navega el mapa
+              </span>
+              <span class="text-white/40 text-xs border border-white/10 px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                <svg class="w-3 h-3 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                Filtra por Area, Type, Price
+              </span>
+              <a href="tel:+17879398739" class="text-gold-500 text-xs font-semibold border border-gold-500/30 px-3 py-1.5 rounded-full hover:bg-gold-500 hover:text-navy-900 transition-colors flex items-center gap-1.5">
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                (787) 939-8739
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MLS iframe wrapper with scroll protection -->
+    <div class="relative" id="mls-wrapper">
+      <iframe
+        id="mls-iframe"
+        src="https://properties.listingspuertorico.com/userId_659384"
+        title="MRT Real Estate - Portal MLS Puerto Rico"
+        class="w-full border-0"
+        style="height: 600px; pointer-events: none;"
+        loading="lazy"
+      ></iframe>
+
+      <!-- Click-to-activate overlay -->
+      <div id="mls-overlay" class="absolute inset-0 cursor-pointer flex items-center justify-center bg-black/5 transition-opacity duration-300">
+        <div class="bg-navy-900/90 backdrop-blur-sm text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 border border-gold-500/30">
+          <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+          </svg>
+          <span class="font-semibold text-sm">Haz clic para explorar el mapa</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Branded Bottom Bar -->
+    <div class="bg-navy-900 border-t border-gold-500/30">
+      <div class="container mx-auto px-4 py-3">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p class="text-white/40 text-xs">
+            Datos del MLS de Puerto Rico. Actualizado en tiempo real. Para tours o más info contacta a MRT Real Estate.
+          </p>
+          <div class="flex items-center gap-3">
+            <a
+              href="https://wa.me/17879398739"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-green-600 text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-green-700 transition-colors flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              WhatsApp
+            </a>
+            <a
+              href="/contact"
+              class="bg-gold-500 text-navy-900 px-4 py-2 rounded-lg text-xs font-semibold hover:bg-gold-600 transition-colors"
+            >
+              Agendar Tour
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const overlay = document.getElementById('mls-overlay');
+    const iframe = document.getElementById('mls-iframe') as HTMLIFrameElement;
+    const wrapper = document.getElementById('mls-wrapper');
+
+    // Click overlay to activate map
+    overlay?.addEventListener('click', () => {
+      if (iframe) iframe.style.pointerEvents = 'auto';
+      if (overlay) overlay.style.opacity = '0';
+      setTimeout(() => { if (overlay) overlay.style.display = 'none'; }, 300);
+    });
+
+    // Deactivate map when user clicks outside the wrapper
+    document.addEventListener('click', (e) => {
+      if (wrapper && !wrapper.contains(e.target as Node)) {
+        if (iframe) iframe.style.pointerEvents = 'none';
+        if (overlay) {
+          overlay.style.display = 'flex';
+          requestAnimationFrame(() => { if (overlay) overlay.style.opacity = '1'; });
+        }
+      }
+    });
+
+    // Also deactivate when scrolling away from the map section
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (!wrapper) return;
+        const rect = wrapper.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) {
+          if (iframe) iframe.style.pointerEvents = 'none';
+          if (overlay) {
+            overlay.style.display = 'flex';
+            requestAnimationFrame(() => { if (overlay) overlay.style.opacity = '1'; });
+          }
+        }
+      }, 150);
+    });
+  </script>
+
+  <!-- SEO Content -->
+  <section class="py-16 px-4 bg-white">
+    <div class="container mx-auto">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-3xl text-navy-900 mb-6">
+          Bienes Raíces en Puerto Rico con MRT Real Estate
+        </h2>
+        <p class="text-gray-600 mb-4">
+          MRT Real Estate se especializa en propiedades en el centro y noroeste de Puerto Rico.
+          Desde terrenos agrícolas y fincas en las montañas de Lares, Utuado y Ciales, hasta casas
+          familiares en Arecibo, Hatillo y Barceloneta — nuestro equipo conoce el mercado local a la perfección.
+        </p>
+        <p class="text-gray-600 mb-6">
+          Ya sea que busques invertir en bienes raíces, comprar tu primera casa, o encontrar
+          terreno para desarrollo agrícola o turístico, te ayudamos en cada paso del proceso.
+        </p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <h3 class="font-serif text-xl text-navy-900 mb-3">Areas que Servimos</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Arecibo — Capital del Norte
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Utuado — Corazón de la Montaña
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Lares — Pueblo de la Insurrección
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Ciales, Hatillo, Barceloneta, Guaynabo
+              </li>
+            </ul>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+            <h3 class="font-serif text-xl text-navy-900 mb-3">Tipos de Propiedad</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Casas residenciales y multi-familiares
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Terrenos y solares
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Fincas y haciendas agrícolas
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></span>
+                Edificios comerciales y mixtos
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

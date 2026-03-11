@@ -1,0 +1,35 @@
+---
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/properties', label: 'Propiedades' },
+  { href: '/sell', label: 'Vende tu Propiedad' },
+  { href: '/calculators', label: 'Calculadoras' },
+  { href: '/about', label: 'Nosotros' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="hidden lg:block">
+  <ul class="flex items-center gap-8">
+    {navLinks.map(({ href, label }) => (
+      <li>
+        <a
+          href={href}
+          class:list={[
+            'text-sm font-medium transition-colors relative',
+            'hover:text-gold-500',
+            currentPath === href ? 'text-gold-500' : 'text-white',
+          ]}
+        >
+          {label}
+          {currentPath === href && (
+            <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold-500"></span>
+          )}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

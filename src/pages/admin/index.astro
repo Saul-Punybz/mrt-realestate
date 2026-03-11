@@ -1,0 +1,270 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Dashboard">
+  <!-- Status Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <!-- MLS API Status -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <span id="mls-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          Pendiente
+        </span>
+      </div>
+      <h3 class="font-semibold text-navy-900">MLS APIs</h3>
+      <p class="text-gray-500 text-sm">Bridge API, SimplyRETS</p>
+    </div>
+
+    <!-- Email Status -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+        <span id="email-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          Pendiente
+        </span>
+      </div>
+      <h3 class="font-semibold text-navy-900">SendGrid</h3>
+      <p class="text-gray-500 text-sm">Servicio de email</p>
+    </div>
+
+    <!-- Google Status -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+        </div>
+        <span id="google-status" class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-700">
+          Pendiente
+        </span>
+      </div>
+      <h3 class="font-semibold text-navy-900">Google Services</h3>
+      <p class="text-gray-500 text-sm">Maps, Analytics</p>
+    </div>
+
+    <!-- Site Status -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-gold-100 rounded-lg flex items-center justify-center">
+          <svg class="w-6 h-6 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
+          </svg>
+        </div>
+        <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+          Activo
+        </span>
+      </div>
+      <h3 class="font-semibold text-navy-900">Sitio Web</h3>
+      <p class="text-gray-500 text-sm">MRT Real Estate</p>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <!-- Configuration Checklist -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="font-serif text-xl text-navy-900 mb-4">Lista de Configuración</h2>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg" id="check-mls">
+          <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
+            <svg class="w-4 h-4 text-green-500 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-navy-900">Configurar MLS API</p>
+            <p class="text-sm text-gray-500">Bridge API o SimplyRETS</p>
+          </div>
+          <a href="/admin/mls-api" class="text-gold-600 hover:text-gold-700 text-sm font-medium">
+            Configurar →
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg" id="check-email">
+          <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
+            <svg class="w-4 h-4 text-green-500 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-navy-900">Configurar SendGrid</p>
+            <p class="text-sm text-gray-500">Para formularios de contacto</p>
+          </div>
+          <a href="/admin/email" class="text-gold-600 hover:text-gold-700 text-sm font-medium">
+            Configurar →
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg" id="check-google">
+          <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
+            <svg class="w-4 h-4 text-green-500 hidden" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-navy-900">Configurar Google Services</p>
+            <p class="text-sm text-gray-500">Maps API y Analytics</p>
+          </div>
+          <a href="/admin/google" class="text-gold-600 hover:text-gold-700 text-sm font-medium">
+            Configurar →
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+          <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center bg-green-500 border-green-500">
+            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="flex-1">
+            <p class="font-medium text-navy-900">Desplegar en Vercel</p>
+            <p class="text-sm text-gray-500">Listo para producción</p>
+          </div>
+          <span class="text-green-600 text-sm font-medium">Listo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+      <h2 class="font-serif text-xl text-navy-900 mb-4">Enlaces Rápidos</h2>
+      <div class="grid grid-cols-2 gap-4">
+        <a
+          href="/"
+          target="_blank"
+          class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          <svg class="w-8 h-8 text-navy-900 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <p class="font-medium text-navy-900">Ver Sitio</p>
+          <p class="text-sm text-gray-500">Página principal</p>
+        </a>
+
+        <a
+          href="/properties"
+          target="_blank"
+          class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          <svg class="w-8 h-8 text-navy-900 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          <p class="font-medium text-navy-900">Propiedades</p>
+          <p class="text-sm text-gray-500">Listado de propiedades</p>
+        </a>
+
+        <a
+          href="/calculators"
+          target="_blank"
+          class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          <svg class="w-8 h-8 text-navy-900 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <p class="font-medium text-navy-900">Calculadoras</p>
+          <p class="text-sm text-gray-500">Hipoteca y ROI</p>
+        </a>
+
+        <a
+          href="/contact"
+          target="_blank"
+          class="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+        >
+          <svg class="w-8 h-8 text-navy-900 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <p class="font-medium text-navy-900">Contacto</p>
+          <p class="text-sm text-gray-500">Formulario de contacto</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Environment Variables Info -->
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+    <div class="flex gap-4">
+      <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-semibold text-blue-900 mb-1">Sobre las Variables de Entorno</h3>
+        <p class="text-blue-700 text-sm mb-3">
+          Las credenciales de API se configuran como variables de entorno para mayor seguridad.
+          En este panel puedes ver el estado y obtener instrucciones para configurarlas.
+        </p>
+        <p class="text-blue-700 text-sm">
+          <strong>Para Vercel:</strong> Ve a tu proyecto → Settings → Environment Variables y agrega las variables indicadas en cada sección.
+        </p>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  // Check configuration status from localStorage
+  function updateStatus() {
+    const mlsConfigured = localStorage.getItem('mrt_mls_configured') === 'true';
+    const emailConfigured = localStorage.getItem('mrt_email_configured') === 'true';
+    const googleConfigured = localStorage.getItem('mrt_google_configured') === 'true';
+
+    // Update status badges
+    const mlsStatus = document.getElementById('mls-status');
+    const emailStatus = document.getElementById('email-status');
+    const googleStatus = document.getElementById('google-status');
+
+    if (mlsConfigured && mlsStatus) {
+      mlsStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+      mlsStatus.textContent = 'Configurado';
+    }
+    if (emailConfigured && emailStatus) {
+      emailStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+      emailStatus.textContent = 'Configurado';
+    }
+    if (googleConfigured && googleStatus) {
+      googleStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700';
+      googleStatus.textContent = 'Configurado';
+    }
+
+    // Update checklist
+    const checkMls = document.getElementById('check-mls');
+    const checkEmail = document.getElementById('check-email');
+    const checkGoogle = document.getElementById('check-google');
+
+    if (mlsConfigured && checkMls) {
+      const icon = checkMls.querySelector('.w-6.h-6');
+      if (icon) {
+        icon.classList.add('bg-green-500', 'border-green-500');
+        icon.querySelector('svg')?.classList.remove('hidden');
+      }
+    }
+    if (emailConfigured && checkEmail) {
+      const icon = checkEmail.querySelector('.w-6.h-6');
+      if (icon) {
+        icon.classList.add('bg-green-500', 'border-green-500');
+        icon.querySelector('svg')?.classList.remove('hidden');
+      }
+    }
+    if (googleConfigured && checkGoogle) {
+      const icon = checkGoogle.querySelector('.w-6.h-6');
+      if (icon) {
+        icon.classList.add('bg-green-500', 'border-green-500');
+        icon.querySelector('svg')?.classList.remove('hidden');
+      }
+    }
+  }
+
+  updateStatus();
+</script>

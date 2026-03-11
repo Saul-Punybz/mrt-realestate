@@ -1,0 +1,359 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Configuración">
+  <div class="max-w-4xl">
+    <!-- Change Password -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <h2 class="font-serif text-xl text-navy-900 mb-6">Cambiar Contraseña de Admin</h2>
+
+      <div class="space-y-4 max-w-md">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Contraseña Actual
+          </label>
+          <input
+            type="password"
+            id="current-pass"
+            placeholder="••••••••"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Nueva Contraseña
+          </label>
+          <input
+            type="password"
+            id="new-pass"
+            placeholder="••••••••"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Confirmar Nueva Contraseña
+          </label>
+          <input
+            type="password"
+            id="confirm-pass"
+            placeholder="••••••••"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+        </div>
+
+        <div id="pass-error" class="text-red-500 text-sm hidden"></div>
+        <div id="pass-success" class="text-green-500 text-sm hidden"></div>
+
+        <button
+          id="change-pass"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Cambiar Contraseña
+        </button>
+      </div>
+    </div>
+
+    <!-- Site Information -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <h2 class="font-serif text-xl text-navy-900 mb-6">Información del Sitio</h2>
+
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Nombre del Negocio
+            </label>
+            <input
+              type="text"
+              id="site-name"
+              value="MRT Real Estate"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Teléfono
+            </label>
+            <input
+              type="tel"
+              id="site-phone"
+              value="(787) 939-8739"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Email de Contacto
+            </label>
+            <input
+              type="email"
+              id="site-email"
+              value="info@mrtrealestate.com"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              WhatsApp
+            </label>
+            <input
+              type="text"
+              id="site-whatsapp"
+              value="+17879398739"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Dirección
+          </label>
+          <input
+            type="text"
+            id="site-address"
+            value="Arecibo, Puerto Rico"
+            class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+          />
+        </div>
+
+        <button
+          id="save-site"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Guardar Información
+        </button>
+      </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <h2 class="font-serif text-xl text-navy-900 mb-6">Redes Sociales</h2>
+
+      <div class="space-y-4">
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Facebook URL
+            </label>
+            <input
+              type="url"
+              id="social-facebook"
+              placeholder="https://facebook.com/mrtrealestate"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Instagram URL
+            </label>
+            <input
+              type="url"
+              id="social-instagram"
+              placeholder="https://instagram.com/mrtrealestate"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              LinkedIn URL
+            </label>
+            <input
+              type="url"
+              id="social-linkedin"
+              placeholder="https://linkedin.com/company/mrtrealestate"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              YouTube URL
+            </label>
+            <input
+              type="url"
+              id="social-youtube"
+              placeholder="https://youtube.com/@mrtrealestate"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <button
+          id="save-social"
+          class="bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-medium hover:bg-gold-600 transition-colors"
+        >
+          Guardar Redes Sociales
+        </button>
+      </div>
+    </div>
+
+    <!-- Danger Zone -->
+    <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+      <h2 class="font-serif text-xl text-red-900 mb-4">Zona de Peligro</h2>
+      <p class="text-red-700 text-sm mb-4">
+        Estas acciones son irreversibles. Procede con precaución.
+      </p>
+      <div class="flex gap-4">
+        <button
+          id="clear-config"
+          class="bg-red-100 text-red-700 px-4 py-2 rounded-lg font-medium hover:bg-red-200 transition-colors"
+        >
+          Limpiar Configuración
+        </button>
+        <button
+          id="reset-admin"
+          class="bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors"
+        >
+          Restablecer Credenciales de Admin
+        </button>
+      </div>
+    </div>
+  </div>
+</AdminLayout>
+
+<script>
+  const DEFAULT_USER = 'admin';
+  const DEFAULT_PASS = 'admin123';
+
+  // Load saved values
+  function loadSavedValues() {
+    const siteName = localStorage.getItem('mrt_site_name');
+    const sitePhone = localStorage.getItem('mrt_site_phone');
+    const siteEmail = localStorage.getItem('mrt_site_email');
+    const siteWhatsapp = localStorage.getItem('mrt_site_whatsapp');
+    const siteAddress = localStorage.getItem('mrt_site_address');
+    const socialFb = localStorage.getItem('mrt_social_facebook');
+    const socialIg = localStorage.getItem('mrt_social_instagram');
+    const socialLi = localStorage.getItem('mrt_social_linkedin');
+    const socialYt = localStorage.getItem('mrt_social_youtube');
+
+    if (siteName) (document.getElementById('site-name') as HTMLInputElement).value = siteName;
+    if (sitePhone) (document.getElementById('site-phone') as HTMLInputElement).value = sitePhone;
+    if (siteEmail) (document.getElementById('site-email') as HTMLInputElement).value = siteEmail;
+    if (siteWhatsapp) (document.getElementById('site-whatsapp') as HTMLInputElement).value = siteWhatsapp;
+    if (siteAddress) (document.getElementById('site-address') as HTMLInputElement).value = siteAddress;
+    if (socialFb) (document.getElementById('social-facebook') as HTMLInputElement).value = socialFb;
+    if (socialIg) (document.getElementById('social-instagram') as HTMLInputElement).value = socialIg;
+    if (socialLi) (document.getElementById('social-linkedin') as HTMLInputElement).value = socialLi;
+    if (socialYt) (document.getElementById('social-youtube') as HTMLInputElement).value = socialYt;
+  }
+
+  // Change password
+  document.getElementById('change-pass')?.addEventListener('click', () => {
+    const currentPass = (document.getElementById('current-pass') as HTMLInputElement).value;
+    const newPass = (document.getElementById('new-pass') as HTMLInputElement).value;
+    const confirmPass = (document.getElementById('confirm-pass') as HTMLInputElement).value;
+    const errorEl = document.getElementById('pass-error');
+    const successEl = document.getElementById('pass-success');
+
+    // Get stored password or default
+    const storedPass = localStorage.getItem('mrt_admin_pass') || DEFAULT_PASS;
+
+    // Validate
+    if (currentPass !== storedPass) {
+      if (errorEl) {
+        errorEl.textContent = 'La contraseña actual es incorrecta';
+        errorEl.classList.remove('hidden');
+      }
+      successEl?.classList.add('hidden');
+      return;
+    }
+
+    if (newPass.length < 6) {
+      if (errorEl) {
+        errorEl.textContent = 'La nueva contraseña debe tener al menos 6 caracteres';
+        errorEl.classList.remove('hidden');
+      }
+      successEl?.classList.add('hidden');
+      return;
+    }
+
+    if (newPass !== confirmPass) {
+      if (errorEl) {
+        errorEl.textContent = 'Las contraseñas no coinciden';
+        errorEl.classList.remove('hidden');
+      }
+      successEl?.classList.add('hidden');
+      return;
+    }
+
+    // Save new password
+    localStorage.setItem('mrt_admin_pass', newPass);
+    errorEl?.classList.add('hidden');
+    if (successEl) {
+      successEl.textContent = 'Contraseña cambiada exitosamente';
+      successEl.classList.remove('hidden');
+    }
+
+    // Clear inputs
+    (document.getElementById('current-pass') as HTMLInputElement).value = '';
+    (document.getElementById('new-pass') as HTMLInputElement).value = '';
+    (document.getElementById('confirm-pass') as HTMLInputElement).value = '';
+  });
+
+  // Save site info
+  document.getElementById('save-site')?.addEventListener('click', () => {
+    localStorage.setItem('mrt_site_name', (document.getElementById('site-name') as HTMLInputElement).value);
+    localStorage.setItem('mrt_site_phone', (document.getElementById('site-phone') as HTMLInputElement).value);
+    localStorage.setItem('mrt_site_email', (document.getElementById('site-email') as HTMLInputElement).value);
+    localStorage.setItem('mrt_site_whatsapp', (document.getElementById('site-whatsapp') as HTMLInputElement).value);
+    localStorage.setItem('mrt_site_address', (document.getElementById('site-address') as HTMLInputElement).value);
+    alert('Información del sitio guardada');
+  });
+
+  // Save social media
+  document.getElementById('save-social')?.addEventListener('click', () => {
+    localStorage.setItem('mrt_social_facebook', (document.getElementById('social-facebook') as HTMLInputElement).value);
+    localStorage.setItem('mrt_social_instagram', (document.getElementById('social-instagram') as HTMLInputElement).value);
+    localStorage.setItem('mrt_social_linkedin', (document.getElementById('social-linkedin') as HTMLInputElement).value);
+    localStorage.setItem('mrt_social_youtube', (document.getElementById('social-youtube') as HTMLInputElement).value);
+    alert('Redes sociales guardadas');
+  });
+
+  // Clear config
+  document.getElementById('clear-config')?.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que deseas limpiar toda la configuración de APIs? Esta acción no se puede deshacer.')) {
+      // Clear API configs
+      localStorage.removeItem('mrt_bridge_url');
+      localStorage.removeItem('mrt_bridge_key');
+      localStorage.removeItem('mrt_bridge_dataset');
+      localStorage.removeItem('mrt_simplyrets_url');
+      localStorage.removeItem('mrt_simplyrets_user');
+      localStorage.removeItem('mrt_simplyrets_pass');
+      localStorage.removeItem('mrt_sendgrid_key');
+      localStorage.removeItem('mrt_from_email');
+      localStorage.removeItem('mrt_to_email');
+      localStorage.removeItem('mrt_maps_key');
+      localStorage.removeItem('mrt_analytics_id');
+      localStorage.removeItem('mrt_gtm_id');
+      localStorage.removeItem('mrt_mls_configured');
+      localStorage.removeItem('mrt_email_configured');
+      localStorage.removeItem('mrt_google_configured');
+      alert('Configuración limpiada');
+      window.location.reload();
+    }
+  });
+
+  // Reset admin credentials
+  document.getElementById('reset-admin')?.addEventListener('click', () => {
+    if (confirm('¿Estás seguro de que deseas restablecer las credenciales de admin a los valores por defecto (admin/admin123)?')) {
+      localStorage.removeItem('mrt_admin_user');
+      localStorage.removeItem('mrt_admin_pass');
+      sessionStorage.removeItem('mrt_admin_auth');
+      alert('Credenciales restablecidas. Serás redirigido al login.');
+      window.location.reload();
+    }
+  });
+
+  loadSavedValues();
+</script>

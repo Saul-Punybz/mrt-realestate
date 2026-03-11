@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const blogPosts = [
+  {
+    slug: 'guia-comprar-casa-puerto-rico',
+    title: 'Guía Completa para Comprar Casa en Puerto Rico',
+    excerpt: 'Todo lo que necesitas saber antes de comprar tu primera propiedad en la isla del encanto. Desde financiamiento hasta el proceso de cierre.',
+    image: '/images/listings/ready-house-1.jpg',
+    category: 'Guías',
+    date: '2024-12-15',
+    readTime: '10 min',
+  },
+  {
+    slug: 'beneficios-fiscales-act-60',
+    title: 'Beneficios Fiscales del Act 60 para Inversionistas',
+    excerpt: 'Descubre cómo el Act 60 puede reducir tus impuestos y por qué Puerto Rico es un destino atractivo para inversionistas inmobiliarios.',
+    image: '/images/listings/penthouse-guaynabo-1.jpg',
+    category: 'Inversiones',
+    date: '2024-12-10',
+    readTime: '8 min',
+  },
+  {
+    slug: 'mejores-zonas-vivir-puerto-rico',
+    title: 'Las 10 Mejores Zonas para Vivir en Puerto Rico',
+    excerpt: 'Desde Dorado hasta Rincón, exploramos las comunidades más deseables de la isla para familias, profesionales y retirados.',
+    image: '/images/listings/family-carrizales-1.jpg',
+    category: 'Lifestyle',
+    date: '2024-12-05',
+    readTime: '12 min',
+  },
+  {
+    slug: 'proceso-hipoteca-puerto-rico',
+    title: 'Cómo Obtener una Hipoteca en Puerto Rico: Paso a Paso',
+    excerpt: 'Aprende sobre los requisitos, tipos de préstamos disponibles y cómo prepararte para obtener la mejor tasa hipotecaria.',
+    image: '/images/listings/remodeled-ciales-1.jpg',
+    category: 'Financiamiento',
+    date: '2024-11-28',
+    readTime: '9 min',
+  },
+  {
+    slug: 'invertir-propiedades-airbnb',
+    title: 'Invertir en Propiedades para Airbnb en Puerto Rico',
+    excerpt: 'Análisis del mercado de alquileres vacacionales y cómo maximizar tu retorno de inversión en propiedades de renta corta.',
+    image: '/images/listings/rental-caguana-1.jpg',
+    category: 'Inversiones',
+    date: '2024-11-20',
+    readTime: '11 min',
+  },
+  {
+    slug: 'mercado-inmobiliario-2024',
+    title: 'Estado del Mercado Inmobiliario de Puerto Rico 2024',
+    excerpt: 'Análisis de tendencias, precios y proyecciones del mercado de bienes raíces en la isla para el próximo año.',
+    image: '/images/listings/solar-piuertos-1.jpg',
+    category: 'Mercado',
+    date: '2024-11-15',
+    readTime: '7 min',
+  },
+];
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString('es-PR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title="Blog"
+  description="Artículos, guías y noticias sobre bienes raíces en Puerto Rico. Consejos para comprar, vender e invertir en propiedades."
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-r from-navy-900 to-navy-800 py-16 px-4 -mt-20 pt-28">
+    <div class="container mx-auto">
+      <div class="max-w-3xl">
+        <span class="text-gold-500 font-semibold uppercase tracking-wider text-sm">
+          Blog
+        </span>
+        <h1 class="font-serif text-4xl md:text-5xl text-white mt-2 mb-4">
+          Noticias y Guías Inmobiliarias
+        </h1>
+        <p class="text-white/80 text-lg">
+          Mantente informado sobre el mercado inmobiliario de Puerto Rico con nuestros
+          artículos, guías y análisis de expertos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="py-12 px-4">
+    <div class="container mx-auto">
+      <a href={`/blog/${blogPosts[0].slug}`} class="block group">
+        <div class="grid md:grid-cols-2 gap-8 bg-white rounded-xl shadow-lg overflow-hidden">
+          <div class="h-64 md:h-auto overflow-hidden">
+            <img
+              src={blogPosts[0].image}
+              alt={blogPosts[0].title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <div class="p-8 flex flex-col justify-center">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="bg-gold-100 text-gold-700 px-3 py-1 rounded-full text-sm font-medium">
+                {blogPosts[0].category}
+              </span>
+              <span class="text-gray-500 text-sm">{blogPosts[0].readTime} de lectura</span>
+            </div>
+            <h2 class="font-serif text-2xl md:text-3xl text-navy-900 mb-4 group-hover:text-gold-600 transition-colors">
+              {blogPosts[0].title}
+            </h2>
+            <p class="text-gray-600 mb-4">
+              {blogPosts[0].excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-500 text-sm">{formatDate(blogPosts[0].date)}</span>
+              <span class="text-gold-600 font-medium group-hover:translate-x-2 transition-transform inline-flex items-center gap-1">
+                Leer más
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="py-12 px-4 bg-gray-50">
+    <div class="container mx-auto">
+      <h2 class="font-serif text-2xl text-navy-900 mb-8">Artículos Recientes</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.slice(1).map((post) => (
+          <a href={`/blog/${post.slug}`} class="group">
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden h-full flex flex-col">
+              <div class="h-48 overflow-hidden">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 flex-1 flex flex-col">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="bg-gold-100 text-gold-700 px-2 py-0.5 rounded text-xs font-medium">
+                    {post.category}
+                  </span>
+                  <span class="text-gray-400 text-xs">{post.readTime}</span>
+                </div>
+                <h3 class="font-serif text-lg text-navy-900 mb-2 group-hover:text-gold-600 transition-colors">
+                  {post.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 flex-1">
+                  {post.excerpt}
+                </p>
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-500">{formatDate(post.date)}</span>
+                  <span class="text-gold-600 font-medium">Leer →</span>
+                </div>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 px-4 bg-navy-900">
+    <div class="container mx-auto max-w-2xl text-center">
+      <h2 class="font-serif text-3xl text-white mb-4">
+        Suscríbete a Nuestro Newsletter
+      </h2>
+      <p class="text-white/70 mb-8">
+        Recibe las últimas noticias del mercado inmobiliario, nuevas propiedades y
+        consejos de inversión directamente en tu correo.
+      </p>
+      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="tu@email.com"
+          class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
+        />
+        <button
+          type="submit"
+          class="bg-gold-500 text-navy-900 px-6 py-3 rounded-lg font-semibold hover:bg-gold-400 transition-colors"
+        >
+          Suscribirse
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="EDI - Intercambio Electrónico de Datos | MRT Real Estate"
+  description="Información sobre el sistema EDI (Electronic Data Interchange) de MRT Real Estate para compartir datos de listings entre corredores."
+>
+  <section class="bg-gradient-to-r from-navy-900 to-navy-800 py-16 px-4 -mt-20 pt-28">
+    <div class="container mx-auto">
+      <div class="max-w-3xl">
+        <h1 class="font-serif text-4xl md:text-5xl text-white mb-4">
+          <span class="text-gold-500">EDI</span> — Intercambio Electrónico de Datos
+        </h1>
+        <p class="text-white/80 text-lg">
+          Electronic Data Interchange para profesionales de bienes raíces
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-4">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-2xl text-navy-900">Electronic Data Interchange</h2>
+            <p class="text-gray-500">Intercambio seguro de datos de propiedades</p>
+          </div>
+        </div>
+
+        <div class="space-y-6 text-gray-700 leading-relaxed">
+          <p>
+            El sistema EDI permite el intercambio electrónico de información de listings entre
+            corredores, oficinas y plataformas del MLS de manera estandarizada y segura.
+          </p>
+
+          <h3 class="font-serif text-xl text-navy-900 mt-8">¿Qué es el EDI?</h3>
+          <p>
+            EDI (Electronic Data Interchange) es el sistema que permite compartir datos de
+            propiedades listadas entre corredores de bienes raíces de forma automatizada.
+            Esto facilita la cooperación entre oficinas y asegura que la información de las
+            propiedades esté siempre actualizada y disponible para todos los participantes del mercado.
+          </p>
+
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-gray-50 p-6 rounded-xl text-center">
+              <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-navy-900 mb-2">Sincronización</h4>
+              <p class="text-gray-600 text-sm">Datos de listings actualizados en tiempo real entre todas las plataformas.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl text-center">
+              <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-navy-900 mb-2">Seguridad</h4>
+              <p class="text-gray-600 text-sm">Intercambio cifrado y seguro siguiendo los estándares RETS/RESO.</p>
+            </div>
+
+            <div class="bg-gray-50 p-6 rounded-xl text-center">
+              <div class="w-12 h-12 bg-gold-500 text-navy-900 rounded-full flex items-center justify-center font-bold text-xl mx-auto mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-navy-900 mb-2">Eficiencia</h4>
+              <p class="text-gray-600 text-sm">Elimina la entrada manual de datos y reduce errores en los listings.</p>
+            </div>
+          </div>
+
+          <h3 class="font-serif text-xl text-navy-900 mt-8">Nuestras Integraciones</h3>
+          <ul class="space-y-3 ml-4">
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-gold-500 rounded-full mt-2 flex-shrink-0"></span>
+              <span><strong>Stellar MLS</strong> — Acceso completo al Multiple Listing Service de Puerto Rico.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-gold-500 rounded-full mt-2 flex-shrink-0"></span>
+              <span><strong>Xposure/RealtyHD</strong> — Publicación automatizada de listings con fotos y tours virtuales.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 bg-gold-500 rounded-full mt-2 flex-shrink-0"></span>
+              <span><strong>Zillow</strong> — Distribución de listings a la plataforma más grande de EE.UU.</span>
+            </li>
+          </ul>
+
+          <div class="bg-navy-900 rounded-xl p-8 mt-10 text-center">
+            <h3 class="font-serif text-2xl text-white mb-3">¿Preguntas sobre EDI?</h3>
+            <p class="text-white/80 mb-6">Contáctanos para más información sobre nuestras integraciones</p>
+            <a href="mailto:marilyn@mrtrealestate.com?subject=Consulta%20EDI" class="bg-gold-500 text-navy-900 px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors inline-block">
+              Contactar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,61 @@
+---
+import SearchBar from './SearchBar';
+---
+
+<section class="relative min-h-screen flex items-end overflow-hidden -mt-20">
+  <!-- Background Image -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-900/70 via-navy-900/60 to-navy-900/80 z-10"></div>
+    <img
+      src="/images/listings/penthouse-guaynabo-1.jpg"
+      alt="Propiedad de MRT Real Estate en Puerto Rico"
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-20 container mx-auto px-4 text-center pb-28">
+    <div class="max-w-4xl mx-auto">
+      <!-- Heading -->
+      <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-white font-light mb-6 animate-fade-in" style="animation-delay: 0.1s">
+        Tu hogar soñado
+        <span class="block font-bold text-gold-500 mt-2">comienza aquí</span>
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 animate-fade-in" style="animation-delay: 0.2s">
+        Descubre propiedades exclusivas en las mejores ubicaciones de Puerto Rico.
+        Servicio personalizado para encontrar tu inversión perfecta.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="animate-fade-in" style="animation-delay: 0.3s">
+        <SearchBar client:load />
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 animate-fade-in" style="animation-delay: 0.4s">
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl font-bold text-gold-500">500+</div>
+          <div class="text-white/70 text-sm mt-1">Propiedades</div>
+        </div>
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl font-bold text-gold-500">15+</div>
+          <div class="text-white/70 text-sm mt-1">Años de Experiencia</div>
+        </div>
+        <div class="text-center">
+          <div class="font-serif text-4xl md:text-5xl font-bold text-gold-500">98%</div>
+          <div class="text-white/70 text-sm mt-1">Clientes Satisfechos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+    <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  publishDate?: string;
+  author?: string;
+}
+
+const { title, description, image, publishDate, author } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <article class="pt-24 pb-20">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
