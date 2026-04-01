@@ -1,20 +1,20 @@
 ---
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/properties', label: 'Propiedades' },
-  { href: '/sell', label: 'Vende tu Propiedad' },
-  { href: '/calculators', label: 'Calculadoras' },
-  { href: '/about', label: 'Nosotros' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contacto' },
+  { href: '/', label: 'Inicio', i18nKey: 'nav.inicio' },
+  { href: '/properties', label: 'Propiedades', i18nKey: 'nav.propiedades' },
+  { href: '/sell', label: 'Vende tu Propiedad', i18nKey: 'nav.vende' },
+  { href: '/calculators', label: 'Calculadoras', i18nKey: 'nav.calculadoras' },
+  { href: '/about', label: 'Nosotros', i18nKey: 'nav.nosotros' },
+  { href: '/blog', label: 'Blog', i18nKey: 'nav.blog' },
+  { href: '/contact', label: 'Contacto', i18nKey: 'nav.contacto' },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
 <nav class="hidden lg:block">
-  <ul class="flex items-center gap-8">
-    {navLinks.map(({ href, label }) => (
+  <ul class="flex items-center gap-6">
+    {navLinks.map(({ href, label, i18nKey }) => (
       <li>
         <a
           href={href}
@@ -23,6 +23,7 @@ const currentPath = Astro.url.pathname;
             'hover:text-gold-500',
             currentPath === href ? 'text-gold-500' : 'text-white',
           ]}
+          data-i18n={i18nKey}
         >
           {label}
           {currentPath === href && (
