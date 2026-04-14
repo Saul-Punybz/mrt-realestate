@@ -190,9 +190,9 @@ export async function sendAutoReply(name: string, email: string): Promise<EmailR
           Si necesitas asistencia inmediata, no dudes en contactarnos por WhatsApp:
         </p>
         <div style="text-align: center; margin: 20px 0;">
-          <a href="https://wa.me/17879398739"
+          <a href="https://wa.me/17873261547"
              style="background: #25D366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold;">
-            WhatsApp: (787) 939-8739
+            WhatsApp: (787) 326-1547
           </a>
         </div>
       </div>

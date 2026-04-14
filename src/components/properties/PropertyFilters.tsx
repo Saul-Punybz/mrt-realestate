@@ -13,11 +13,23 @@ const cities = [
   'Aguadilla',
   'Arecibo',
   'Barceloneta',
+  'Bayamón',
+  'Cabo Rojo',
+  'Caguas',
+  'Carolina',
   'Ciales',
+  'Culebra',
+  'Dorado',
   'Guaynabo',
   'Hatillo',
+  'Humacao',
   'Lares',
+  'Mayagüez',
+  'Ponce',
+  'Rincón',
+  'San Juan',
   'Utuado',
+  'Vieques',
 ];
 
 export default function PropertyFilters({ onFilterChange, initialFilters }: PropertyFiltersProps) {

@@ -30,13 +30,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div>
             <h2 class="font-serif text-2xl text-navy-900">Cooperación entre Corredores</h2>
-            <p class="text-gray-500">MRT Real Estate — Blue Ribbon Real Estate LLC, Lic. E-405</p>
+            <p class="text-gray-500">MRT Real Estate — Lic. C-19882</p>
           </div>
         </div>
 
         <div class="space-y-6 text-gray-700 leading-relaxed">
           <p>
-            MRT Real Estate, operando bajo Blue Ribbon Real Estate LLC (Lic. E-405), mantiene una
+            MRT Real Estate (Lic. C-19882) mantiene una
             política abierta de cooperación con todos los corredores y agentes de bienes raíces
             debidamente licenciados en Puerto Rico.
           </p>
@@ -67,27 +67,191 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <h3 class="font-serif text-xl text-navy-900 mt-8">Proceso</h3>
           <ol class="space-y-3 ml-4 list-decimal list-inside">
+            <li><strong>Completar el formulario de Co-Broke</strong> que se encuentra a continuación.</li>
             <li>Contactar a MRT Real Estate para confirmar disponibilidad y términos de co-broke.</li>
             <li>Registrar al cliente comprador antes de coordinar visita.</li>
             <li>Coordinar showing a través de nuestro sistema de citas.</li>
             <li>Presentar ofertas formales con pre-cualificación del comprador.</li>
             <li>Cierre coordinado con el equipo legal y financiero.</li>
           </ol>
-
-          <div class="bg-navy-900 rounded-xl p-8 mt-10 text-center">
-            <h3 class="font-serif text-2xl text-white mb-3">¿Interesado en cooperar?</h3>
-            <p class="text-white/80 mb-6">Contáctanos para discutir oportunidades de co-brokerage</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+17879398739" class="bg-gold-500 text-navy-900 px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors">
-                (787) 939-8739
-              </a>
-              <a href="mailto:marilyn@mrtrealestate.com" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-navy-900 transition-colors">
-                marilyn@mrtrealestate.com
-              </a>
-            </div>
-          </div>
         </div>
       </div>
+
+      <!-- Co-Broke Registration Form -->
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 mt-8" id="co-broke-form">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center">
+            <svg class="w-8 h-8 text-gold-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="font-serif text-2xl text-navy-900">Formulario de Co-Broke</h2>
+            <p class="text-gray-500">Complete este formulario antes de agendar una cita de showing</p>
+          </div>
+        </div>
+
+        <form id="cobroke-form" class="space-y-6">
+          <!-- Broker Info -->
+          <div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-4 pb-2 border-b border-gray-200">Información del Corredor</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo del Corredor *</label>
+                <input type="text" name="broker_name" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Número de Licencia *</label>
+                <input type="text" name="broker_license" required placeholder="Ej: C-12345" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Compañía / Brokerage *</label>
+                <input type="text" name="broker_company" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono *</label>
+                <input type="tel" name="broker_phone" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico *</label>
+                <input type="email" name="broker_email" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Client Info -->
+          <div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-4 pb-2 border-b border-gray-200">Información del Cliente Comprador</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Cliente *</label>
+                <input type="text" name="client_name" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono del Cliente</label>
+                <input type="tel" name="client_phone" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">¿El cliente está pre-cualificado? *</label>
+                <select name="prequalified" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500 bg-white">
+                  <option value="">Seleccionar...</option>
+                  <option value="si">Sí, está pre-cualificado</option>
+                  <option value="en_proceso">En proceso de pre-cualificación</option>
+                  <option value="no">No está pre-cualificado aún</option>
+                  <option value="cash">Compra en efectivo (cash)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property Info -->
+          <div>
+            <h3 class="font-semibold text-navy-900 text-lg mb-4 pb-2 border-b border-gray-200">Propiedad de Interés</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">MLS# o Dirección de la Propiedad *</label>
+                <input type="text" name="property_id" required class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Fecha Preferida para Showing</label>
+                <input type="date" name="preferred_date" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Notas Adicionales</label>
+                <textarea name="notes" rows="3" class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-gold-500" placeholder="Cualquier información adicional relevante..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Agreement -->
+          <div class="bg-gray-50 rounded-lg p-4">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" name="agreement" required class="mt-1 w-4 h-4 text-gold-500 border-gray-300 rounded focus:ring-gold-500" />
+              <span class="text-gray-700 text-sm">
+                Certifico que soy un corredor o agente de bienes raíces debidamente licenciado por DACO y la Junta de Bienes Raíces de Puerto Rico. Acepto los términos de co-brokerage de MRT Real Estate y me comprometo a cumplir con la política de cooperación.
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="text-center">
+            <button type="submit" class="bg-gold-500 text-navy-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-navy-900 hover:text-white transition-colors">
+              Enviar Solicitud de Co-Broke
+            </button>
+          </div>
+
+          <!-- Success/Error Messages -->
+          <div id="cobroke-success" class="hidden bg-green-50 border border-green-200 text-green-800 rounded-lg p-4 text-center">
+            Solicitud enviada exitosamente. Nos pondremos en contacto dentro de 24 horas hábiles.
+          </div>
+          <div id="cobroke-error" class="hidden bg-red-50 border border-red-200 text-red-800 rounded-lg p-4 text-center">
+            Error al enviar. Por favor intente nuevamente o contáctenos directamente.
+          </div>
+        </form>
+      </div>
+
+      <!-- Contact CTA -->
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 mt-8">
+        <div class="bg-navy-900 rounded-xl p-8 text-center">
+          <h3 class="font-serif text-2xl text-white mb-3">¿Preguntas sobre Co-Broke?</h3>
+          <p class="text-white/80 mb-6">Contáctanos para discutir oportunidades de co-brokerage</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+17873261547" class="bg-gold-500 text-navy-900 px-8 py-3 rounded-lg font-bold hover:bg-white transition-colors">
+              (787) 326-1547
+            </a>
+            <a href="mailto:marilyn@mrtrealestate.com" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-navy-900 transition-colors">
+              marilyn@mrtrealestate.com
+            </a>
+          </div>
+        </div>
     </div>
   </section>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbye0qPFQnTL5cu5xV2T23g5n4w9CHjMgWWMhOPbLiJqcUtSmNpI1Qfeqkdyg3r_uyPw/exec';
+
+    const form = document.getElementById('cobroke-form') as HTMLFormElement;
+    const successMsg = document.getElementById('cobroke-success');
+    const errorMsg = document.getElementById('cobroke-error');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg?.classList.add('hidden');
+      errorMsg?.classList.add('hidden');
+
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => {
+        if (key !== 'agreement') data[key] = value.toString();
+      });
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL === 'REPLACE_WITH_YOUR_GOOGLE_APPS_SCRIPT_URL'
+          ? 'https://httpbin.org/post' : GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sheet: 'co-broke',
+            timestamp: new Date().toLocaleString('es-PR', { timeZone: 'America/Puerto_Rico' }),
+            ...data,
+          }),
+        });
+
+        successMsg?.classList.remove('hidden');
+        form.reset();
+        successMsg?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch {
+        errorMsg?.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  </script>
 </BaseLayout>

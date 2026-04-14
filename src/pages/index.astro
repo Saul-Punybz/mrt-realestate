@@ -22,13 +22,13 @@ import Stats from '../components/home/Stats.astro';
   <section class="py-20 px-4">
     <div class="container mx-auto">
       <div class="text-center mb-16">
-        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm" data-i18n="services.label">
           Nuestros Servicios
         </span>
-        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4">
+        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4" data-i18n="services.title">
           ¿Cómo Podemos Ayudarte?
         </h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto" data-i18n="services.subtitle">
           Ofrecemos un servicio integral para todas tus necesidades inmobiliarias
         </p>
       </div>
@@ -41,15 +41,15 @@ import Stats from '../components/home/Stats.astro';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
           </div>
-          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3">
+          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3" data-i18n="services.buy.title">
             Compra tu Hogar
           </h3>
-          <p class="text-gray-600 mb-6">
+          <p class="text-gray-600 mb-6" data-i18n="services.buy.desc">
             Encuentra la propiedad perfecta con nuestra amplia selección de casas,
             apartamentos y villas en Puerto Rico.
           </p>
           <a href="/properties" class="text-gold-600 font-semibold hover:text-navy-900 transition-colors inline-flex items-center gap-2">
-            Ver Propiedades
+            <span data-i18n="services.buy.cta">Ver Propiedades</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -63,15 +63,15 @@ import Stats from '../components/home/Stats.astro';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3">
+          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3" data-i18n="services.sell.title">
             Vende tu Propiedad
           </h3>
-          <p class="text-gray-600 mb-6">
+          <p class="text-gray-600 mb-6" data-i18n="services.sell.desc">
             Obtén el mejor valor por tu propiedad con nuestro equipo de expertos
             y estrategias de marketing efectivas.
           </p>
           <a href="/sell" class="text-gold-600 font-semibold hover:text-navy-900 transition-colors inline-flex items-center gap-2">
-            Evalúa tu Propiedad
+            <span data-i18n="services.sell.cta">Evalúa tu Propiedad</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -85,15 +85,15 @@ import Stats from '../components/home/Stats.astro';
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
-          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3">
+          <h3 class="font-serif text-2xl font-semibold text-navy-900 mb-3" data-i18n="services.invest.title">
             Invierte con Nosotros
           </h3>
-          <p class="text-gray-600 mb-6">
+          <p class="text-gray-600 mb-6" data-i18n="services.invest.desc">
             Maximiza tu retorno con nuestras calculadoras de inversión y
             asesoría especializada en el mercado de PR.
           </p>
           <a href="/calculators" class="text-gold-600 font-semibold hover:text-navy-900 transition-colors inline-flex items-center gap-2">
-            Ver Calculadoras
+            <span data-i18n="services.invest.cta">Ver Calculadoras</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -107,13 +107,13 @@ import Stats from '../components/home/Stats.astro';
   <section class="py-20 px-4 bg-gray-50">
     <div class="container mx-auto">
       <div class="text-center mb-16">
-        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm" data-i18n="videos.label">
           Videos
         </span>
-        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4">
+        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4" data-i18n="videos.title">
           Conoce Más Sobre Bienes Raíces
         </h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto" data-i18n="videos.subtitle">
           Contenido educativo para compradores, vendedores e inversionistas
         </p>
       </div>
@@ -167,7 +167,7 @@ import Stats from '../components/home/Stats.astro';
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
-          Ver Todos los Videos
+          <span data-i18n="videos.cta">Ver Todos los Videos</span>
         </a>
       </div>
     </div>
@@ -185,10 +185,10 @@ import Stats from '../components/home/Stats.astro';
     <div class="container mx-auto relative z-10">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-serif text-4xl md:text-5xl text-white mb-6">
-          ¿Listo para encontrar tu
-          <span class="text-gold-500">hogar ideal</span>?
+          <span data-i18n="cta.title1">¿Listo para encontrar tu</span>
+          <span class="text-gold-500" data-i18n="cta.title2">hogar ideal</span>?
         </h2>
-        <p class="text-white/80 text-lg mb-8">
+        <p class="text-white/80 text-lg mb-8" data-i18n="cta.subtitle">
           Contáctanos hoy y permítenos ayudarte a hacer realidad tu sueño de tener
           la propiedad perfecta en Puerto Rico.
         </p>
@@ -196,11 +196,12 @@ import Stats from '../components/home/Stats.astro';
           <a
             href="/contact"
             class="bg-gold-500 text-navy-900 px-8 py-4 rounded-lg font-bold hover:bg-white transition-colors"
+            data-i18n="cta.button"
           >
             Contáctanos Ahora
           </a>
           <a
-            href="https://wa.me/17879398739"
+            href="https://wa.me/17873261547"
             target="_blank"
             rel="noopener noreferrer"
             class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-navy-900 transition-colors inline-flex items-center justify-center gap-2"
@@ -219,14 +220,14 @@ import Stats from '../components/home/Stats.astro';
   <section class="py-20 px-4 bg-gray-50">
     <div class="container mx-auto">
       <div class="text-center mb-16">
-        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm">
+        <span class="text-gold-600 font-semibold uppercase tracking-wider text-sm" data-i18n="locations.label">
           Ubicaciones
         </span>
-        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4">
+        <h2 class="font-serif text-4xl md:text-5xl text-navy-900 mt-2 mb-4" data-i18n="locations.title">
           Explora Puerto Rico
         </h2>
-        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-          Descubre propiedades en las mejores zonas de la isla
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto" data-i18n="locations.subtitle">
+          Propiedades en todo Puerto Rico, incluyendo Vieques y Culebra
         </p>
       </div>
 
@@ -250,7 +251,7 @@ import Stats from '../components/home/Stats.astro';
             <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent"></div>
             <div class="absolute bottom-4 left-4 text-white">
               <h3 class="font-serif text-xl font-semibold">{location.name}</h3>
-              <p class="text-white/80 text-sm">{location.count} propiedades</p>
+              <p class="text-white/80 text-sm">{location.count} <span data-i18n="locations.count">propiedades</span></p>
             </div>
           </a>
         ))}

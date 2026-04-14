@@ -20,15 +20,27 @@ const propertyTypes = [
 ];
 
 const locations = [
-  { value: '', label: 'Todas las ubicaciones' },
-  { value: 'arecibo', label: 'Arecibo' },
-  { value: 'utuado', label: 'Utuado' },
-  { value: 'lares', label: 'Lares' },
-  { value: 'ciales', label: 'Ciales' },
-  { value: 'hatillo', label: 'Hatillo' },
+  { value: '', label: 'Todo Puerto Rico' },
   { value: 'aguadilla', label: 'Aguadilla' },
+  { value: 'arecibo', label: 'Arecibo' },
   { value: 'barceloneta', label: 'Barceloneta' },
+  { value: 'bayamon', label: 'Bayamón' },
+  { value: 'cabo-rojo', label: 'Cabo Rojo' },
+  { value: 'caguas', label: 'Caguas' },
+  { value: 'carolina', label: 'Carolina' },
+  { value: 'ciales', label: 'Ciales' },
+  { value: 'culebra', label: 'Culebra' },
+  { value: 'dorado', label: 'Dorado' },
   { value: 'guaynabo', label: 'Guaynabo' },
+  { value: 'hatillo', label: 'Hatillo' },
+  { value: 'humacao', label: 'Humacao' },
+  { value: 'lares', label: 'Lares' },
+  { value: 'mayaguez', label: 'Mayagüez' },
+  { value: 'ponce', label: 'Ponce' },
+  { value: 'rincon', label: 'Rincón' },
+  { value: 'san-juan', label: 'San Juan' },
+  { value: 'utuado', label: 'Utuado' },
+  { value: 'vieques', label: 'Vieques' },
 ];
 
 const priceRanges = [

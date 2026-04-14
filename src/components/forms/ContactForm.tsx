@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Send, Loader2, CheckCircle } from 'lucide-react';
+import { submitToSheet } from '../../services/sheets';
 
 interface ContactFormProps {
   propertyId?: string;
@@ -32,17 +33,24 @@ export default function ContactForm({ propertyId, propertyTitle }: ContactFormPr
     setError(null);
 
     try {
-      // Simulate API call - replace with actual endpoint
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const formType = propertyId ? 'consulta-propiedad' : 'contacto';
+      const result = await submitToSheet({
+        formType,
+        data: {
+          nombre: formData.name,
+          email: formData.email,
+          telefono: formData.phone,
+          mensaje: formData.message,
+          ...(propertyId && { propiedad_id: propertyId }),
+          ...(propertyTitle && { propiedad: propertyTitle }),
+        },
+      });
 
-      // In production, send to your API endpoint
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ ...formData, propertyId }),
-      // });
-
-      setIsSubmitted(true);
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setError(result.message);
+      }
     } catch {
       setError('Hubo un error al enviar el mensaje. Por favor intente de nuevo.');
     } finally {
