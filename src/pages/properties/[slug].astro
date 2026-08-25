@@ -17,6 +17,9 @@ export async function getStaticPaths() {
 
 const { property } = Astro.props as { property: Property };
 
+// Vendida o fuera de mercado: la página sigue viva, pero no se anuncia como disponible.
+const unavailable = property.status === 'Sold' || property.status === 'Off Market';
+
 // Schema.org structured data
 const schemaData = {
   '@context': 'https://schema.org',
@@ -42,6 +45,9 @@ const schemaData = {
     '@type': 'Offer',
     price: property.price,
     priceCurrency: 'USD',
+    availability: unavailable
+      ? 'https://schema.org/SoldOut'
+      : 'https://schema.org/InStock',
   },
   numberOfRooms: property.bedrooms,
   numberOfBathroomsTotal: property.bathrooms,
@@ -54,8 +60,9 @@ const schemaData = {
 ---
 
 <BaseLayout
-  title={property.title}
+  title={unavailable ? `${property.title} (no disponible)` : property.title}
   description={property.description.substring(0, 160)}
+  noindex={unavailable}
 >
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
@@ -76,13 +83,35 @@ const schemaData = {
     </div>
   </nav>
 
+  <!-- Aviso: la propiedad ya no está disponible. La página se mantiene viva para no
+       romper enlaces ni resultados de búsqueda, pero no se puede anunciar como
+       disponible. -->
+  {unavailable && (
+    <section class="bg-navy-900 text-white py-4 px-4">
+      <div class="container mx-auto flex flex-col sm:flex-row sm:items-center gap-3">
+        <span class="bg-white text-navy-900 px-3 py-1 rounded-full text-xs font-bold uppercase self-start">
+          {property.status === 'Sold' ? 'Vendida' : 'No disponible'}
+        </span>
+        <p class="text-sm text-white/90">
+          {property.status === 'Sold'
+            ? 'Esta propiedad ya se vendió y no está disponible.'
+            : 'Esta propiedad ya no está en nuestro inventario activo.'}
+          {' '}
+          <a href="/properties" class="underline font-medium">Ver propiedades disponibles</a>
+          {' · '}
+          <a href="/contact" class="underline font-medium">Buscamos algo parecido para ti</a>
+        </p>
+      </div>
+    </section>
+  )}
+
   <!-- Property Header -->
   <section class="py-6 px-4 bg-white border-b">
     <div class="container mx-auto">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            {property.newListing && (
+            {property.newListing && !unavailable && (
               <span class="bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-xs font-bold uppercase">
                 Nueva
               </span>

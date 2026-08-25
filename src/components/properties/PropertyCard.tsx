@@ -94,10 +94,16 @@ export default function PropertyCard({ property, variant = 'default' }: Property
               <span>{property.bathrooms}</span>
             </div>
           )}
-          <div className="flex items-center gap-1.5">
-            <Square className="w-4 h-4" />
-            <span>{property.squareFeet.toLocaleString()} ft²</span>
-          </div>
+          {/* El MLS solo da el area del solar en la mayoria de los listings */}
+          {(property.squareFeet > 0 || (property.lotSize ?? 0) > 0) && (
+            <div className="flex items-center gap-1.5">
+              <Square className="w-4 h-4" />
+              <span>
+                {(property.squareFeet || property.lotSize!).toLocaleString()} ft²
+                {property.squareFeet === 0 && ' solar'}
+              </span>
+            </div>
+          )}
         </div>
 
         {/* CTA - Only for default variant */}

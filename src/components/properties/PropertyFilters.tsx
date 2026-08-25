@@ -1,36 +1,20 @@
 import { useState } from 'react';
 import { ChevronDown, X, SlidersHorizontal } from 'lucide-react';
 import type { PropertyFilters as FilterState } from '../../types/property';
+import { activeListings, listingCities } from '../../data/listings';
 
 interface PropertyFiltersProps {
   onFilterChange?: (filters: FilterState) => void;
   initialFilters?: Partial<FilterState>;
 }
 
-const propertyTypes = ['Casa', 'Apartamento', 'Comercial', 'Terreno', 'Multi-Familiar', 'Mixto', 'Finca'];
+// Igual que con los municipios: solo los tipos que hoy existen en el inventario.
+const propertyTypes = [...new Set(activeListings.map((l) => l.propertyType))].sort();
 
-const cities = [
-  'Aguadilla',
-  'Arecibo',
-  'Barceloneta',
-  'Bayamón',
-  'Cabo Rojo',
-  'Caguas',
-  'Carolina',
-  'Ciales',
-  'Culebra',
-  'Dorado',
-  'Guaynabo',
-  'Hatillo',
-  'Humacao',
-  'Lares',
-  'Mayagüez',
-  'Ponce',
-  'Rincón',
-  'San Juan',
-  'Utuado',
-  'Vieques',
-];
+// Solo los municipios donde MRT tiene inventario disponible hoy. Antes era una lista
+// fija de toda la isla, así que se podía filtrar por pueblos sin una sola propiedad
+// y faltaban los que sí la tienen.
+const cities = listingCities;
 
 export default function PropertyFilters({ onFilterChange, initialFilters }: PropertyFiltersProps) {
   const [filters, setFilters] = useState<FilterState>({

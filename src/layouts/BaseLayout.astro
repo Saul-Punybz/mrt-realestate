@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   image?: string;
   canonicalUrl?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = 'MRT Real Estate - Propiedades premium en Puerto Rico. Encuentra tu hogar ideal con nosotros.',
   image = '/images/og-image.jpg',
   canonicalUrl,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site || 'https://mrtrealestate.com';
@@ -33,6 +35,7 @@ const currentUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).toString
     <meta name="title" content={`${title} | MRT Real Estate Puerto Rico`} />
     <meta name="description" content={description} />
     <link rel="canonical" href={currentUrl} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

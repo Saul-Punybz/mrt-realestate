@@ -5,6 +5,15 @@ interface PropertyDetailsProps {
   property: Property;
 }
 
+const STATUS_ES: Record<Property['status'], string> = {
+  Active: 'Disponible',
+  Pending: 'En proceso',
+  Sold: 'Vendida',
+  'Off Market': 'No disponible',
+  Optioned: 'Opcionada',
+  Rental: 'Alquiler',
+};
+
 export default function PropertyDetails({ property }: PropertyDetailsProps) {
   return (
     <div className="space-y-8">
@@ -30,7 +39,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
               <Square className="w-6 h-6 text-gold-600" />
             </div>
             <div className="font-semibold text-navy-900 text-xl">
-              {property.squareFeet.toLocaleString()}
+              {property.squareFeet > 0 ? property.squareFeet.toLocaleString() : '—'}
             </div>
             <div className="text-gray-500 text-sm">ft² Interior</div>
           </div>
@@ -72,7 +81,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
             label="Año Construcción"
             value={property.yearBuilt?.toString() || 'N/A'}
           />
-          <DetailItem label="Estado" value={property.status} />
+          <DetailItem label="Estado" value={STATUS_ES[property.status] ?? property.status} />
           <DetailItem label="MLS #" value={property.mlsNumber || 'N/A'} />
           <DetailItem label="Días en Mercado" value={property.daysOnMarket.toString()} />
           <DetailItem label="ID Listado" value={property.listingId} />
