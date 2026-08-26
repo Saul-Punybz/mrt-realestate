@@ -168,26 +168,31 @@ var AVISAR_A   = 'marilyn@mrtrealestate.com';
 var REMITENTE  = 'MRT Real Estate';
 var SITIO      = 'https://www.mrtrealestate.com';
 
+// Esto lo lee Marilyn, asi que va en español correcto, con acentos.
 var TITULOS = {
-  'contacto':           'Nuevo mensaje desde tu pagina',
+  'contacto':           'Nuevo mensaje desde tu página',
   'consulta-propiedad': 'Alguien pregunta por una de tus propiedades',
-  'co-broke':           'Un corredor se registro en Co-Broke'
+  'co-broke':           'Un corredor se registró en Co-Broke'
 };
 
 // Como se rotula cada campo en el correo. Lo que no este aqui sale con
 // el nombre crudo, con los guiones bajos cambiados por espacios.
 var ETIQUETAS = {
-  timestamp: 'Fecha', nombre: 'Nombre', email: 'Email', telefono: 'Telefono',
+  timestamp: 'Fecha', nombre: 'Nombre', email: 'Email', telefono: 'Teléfono',
   mensaje: 'Mensaje', propiedad: 'Propiedad', propiedad_id: 'ID de propiedad',
-  broker_name: 'Corredor', broker_license: 'Licencia', broker_company: 'Compania',
-  broker_phone: 'Telefono del corredor', broker_email: 'Email del corredor',
-  client_name: 'Cliente', client_phone: 'Telefono del cliente',
+  broker_name: 'Corredor', broker_license: 'Licencia', broker_company: 'Compañía',
+  broker_phone: 'Teléfono del corredor', broker_email: 'Email del corredor',
+  client_name: 'Cliente', client_phone: 'Teléfono del cliente',
   prequalified: 'Precualificado', preferred_date: 'Fecha preferida', notes: 'Notas',
   property_id: 'ID de propiedad'
 };
 
+// Campos de control: no se listan en la tabla. propiedad_slug se usa para
+// armar el enlace a la ficha de la propiedad, no para mostrarlo crudo.
+var NO_LISTAR = ['sheet', 'propiedad_slug'];
+
 function doPost(e) {
-  var data, sheetName;
+  var data, sheetName, hojaUrl = '';
 
   // 1) Guardar el lead. Esto es lo critico y va primero.
   try {
@@ -203,6 +208,10 @@ function doPost(e) {
     }
 
     sheet.appendRow(headers.map(function (h) { return data[h] || ''; }));
+
+    // Enlace directo a la pestaña donde acaba de caer el lead, no a la
+    // hoja en general. Marilyn abre el correo y cae en la fila correcta.
+    hojaUrl = ss.getUrl() + '#gid=' + sheet.getSheetId();
   } catch (error) {
     return ContentService
       .createTextOutput(JSON.stringify({ success: false, error: error.message }))
@@ -212,7 +221,7 @@ function doPost(e) {
   // 2) Avisarle a Marilyn. En su propio try: si el correo falla, el lead YA
   //    quedo guardado y no se pierde. Nunca al reves.
   try {
-    avisarAMarilyn(sheetName, data);
+    avisarAMarilyn(sheetName, data, hojaUrl);
   } catch (error) {
     console.error('Fallo el aviso por email: ' + error.message);
   }
@@ -222,9 +231,9 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function avisarAMarilyn(sheetName, data) {
-  var titulo = TITULOS[sheetName] || 'Nuevo lead desde tu pagina';
-  // En co-broke quien escribe es el corredor, no el cliente: va primero broker_name.
+function avisarAMarilyn(sheetName, data, hojaUrl) {
+  var titulo = TITULOS[sheetName] || 'Nuevo lead desde tu página';
+  // En co-broke quien escribe es el corredor, no el cliente.
   var nombre = data.nombre || data.broker_name || data.client_name || 'Sin nombre';
   var email  = data.email  || data.broker_email || '';
   var tel    = data.telefono || data.broker_phone || data.client_phone || '';
@@ -232,8 +241,11 @@ function avisarAMarilyn(sheetName, data) {
   var asunto = titulo + ' — ' + nombre;
   if (data.propiedad) asunto += ' · ' + data.propiedad;
 
+  // Todo lo que la persona escribio, tal cual lo mando.
   var filas = Object.keys(data)
-    .filter(function (k) { return k !== 'sheet' && data[k] !== '' && data[k] != null; })
+    .filter(function (k) {
+      return NO_LISTAR.indexOf(k) === -1 && data[k] !== '' && data[k] != null;
+    })
     .map(function (k) {
       var etiqueta = ETIQUETAS[k] || k.replace(/_/g, ' ');
       return '<tr>' +
@@ -244,16 +256,24 @@ function avisarAMarilyn(sheetName, data) {
     })
     .join('');
 
+  var boton = function (href, texto, fondo) {
+    return '<a href="' + href + '" style="background:' + fondo + ';color:#fff;' +
+      'padding:11px 20px;border-radius:6px;text-decoration:none;display:inline-block;' +
+      'margin:0 8px 8px 0;font-size:14px">' + texto + '</a>';
+  };
+
   var acciones = '';
-  if (email) {
-    acciones += '<a href="mailto:' + encodeURI(email) + '" ' +
-      'style="background:#c9a227;color:#fff;padding:11px 20px;border-radius:6px;' +
-      'text-decoration:none;display:inline-block;margin:0 8px 8px 0">Responder por email</a>';
+  if (email) acciones += boton('mailto:' + encodeURI(email), 'Responder por email', '#c9a227');
+  if (tel)   acciones += boton('tel:' + encodeURI(String(tel).replace(/[^0-9+]/g, '')), 'Llamar', '#1e2a44');
+
+  // Enlaces secundarios. La hoja va SIEMPRE, para que pueda entrar desde el correo.
+  var enlaces = [];
+  if (data.propiedad_slug) {
+    enlaces.push('<a href="' + SITIO + '/properties/' + encodeURIComponent(data.propiedad_slug) +
+      '" style="color:#1e2a44">Ver la propiedad en tu página</a>');
   }
-  if (tel) {
-    acciones += '<a href="tel:' + encodeURI(String(tel).replace(/[^0-9+]/g, '')) + '" ' +
-      'style="background:#1e2a44;color:#fff;padding:11px 20px;border-radius:6px;' +
-      'text-decoration:none;display:inline-block;margin:0 8px 8px 0">Llamar</a>';
+  if (hojaUrl) {
+    enlaces.push('<a href="' + hojaUrl + '" style="color:#1e2a44">Abrir tu hoja de leads</a>');
   }
 
   var html =
@@ -261,16 +281,19 @@ function avisarAMarilyn(sheetName, data) {
       '<p style="font-size:18px;margin:0 0 6px"><strong>Marilyn, ' +
         titulo.charAt(0).toLowerCase() + titulo.slice(1) + '.</strong></p>' +
       '<p style="color:#6b7280;margin:0 0 20px;font-size:14px">' +
-        'Esta persona escribio desde <a href="' + SITIO + '" style="color:#6b7280">mrtrealestate.com</a>. ' +
-        'Ya quedo guardada en tu hoja de leads.</p>' +
+        'Esta persona escribió desde <a href="' + SITIO + '" style="color:#6b7280">mrtrealestate.com</a>. ' +
+        'Ya quedó guardada en tu hoja de leads.</p>' +
       '<table style="border-collapse:collapse;font-size:14px">' + filas + '</table>' +
       (acciones ? '<p style="margin:24px 0 0">' + acciones + '</p>' : '') +
+      (enlaces.length
+        ? '<p style="margin:14px 0 0;font-size:14px">' + enlaces.join('&nbsp;&nbsp;·&nbsp;&nbsp;') + '</p>'
+        : '') +
       '<p style="color:#9ca3af;font-size:12px;margin:28px 0 0;border-top:1px solid #e5e7eb;padding-top:14px">' +
-        'Aviso automatico de tu pagina. No hace falta responder este correo: ' +
+        'Aviso automático de tu página. No hace falta responder este correo: ' +
         'dale a Responder y le contestas directo a la persona.</p>' +
     '</div>';
 
-  MailApp.sendEmail(AVISAR_A, asunto, textoPlano(titulo, data), {
+  MailApp.sendEmail(AVISAR_A, asunto, textoPlano(titulo, data, hojaUrl), {
     name: REMITENTE,
     htmlBody: html,
     // Con esto, "Responder" le contesta al cliente, no al script.
@@ -278,13 +301,19 @@ function avisarAMarilyn(sheetName, data) {
   });
 }
 
-function textoPlano(titulo, data) {
+function textoPlano(titulo, data, hojaUrl) {
+  var lineas = Object.keys(data)
+    .filter(function (k) { return NO_LISTAR.indexOf(k) === -1 && data[k]; })
+    .map(function (k) { return (ETIQUETAS[k] || k.replace(/_/g, ' ')) + ': ' + data[k]; });
+
+  if (data.propiedad_slug) {
+    lineas.push('Ver la propiedad: ' + SITIO + '/properties/' + data.propiedad_slug);
+  }
+  if (hojaUrl) lineas.push('Tu hoja de leads: ' + hojaUrl);
+
   return 'Marilyn, ' + titulo.charAt(0).toLowerCase() + titulo.slice(1) + '.\n' +
-    'Esta persona escribio desde mrtrealestate.com y ya quedo guardada en tu hoja.\n\n' +
-    Object.keys(data)
-      .filter(function (k) { return k !== 'sheet' && data[k]; })
-      .map(function (k) { return (ETIQUETAS[k] || k.replace(/_/g, ' ')) + ': ' + data[k]; })
-      .join('\n');
+    'Esta persona escribió desde mrtrealestate.com y ya quedó guardada en tu hoja.\n\n' +
+    lineas.join('\n');
 }
 
 function escapar(s) {

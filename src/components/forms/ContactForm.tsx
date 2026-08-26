@@ -5,9 +5,12 @@ import { submitToSheet } from '../../services/sheets';
 interface ContactFormProps {
   propertyId?: string;
   propertyTitle?: string;
+  /** Slug de la propiedad. Viaja al Apps Script para que el aviso por email
+   *  pueda enlazar a la ficha; no se guarda como columna en la hoja. */
+  propertySlug?: string;
 }
 
-export default function ContactForm({ propertyId, propertyTitle }: ContactFormProps) {
+export default function ContactForm({ propertyId, propertyTitle, propertySlug }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -43,6 +46,7 @@ export default function ContactForm({ propertyId, propertyTitle }: ContactFormPr
           mensaje: formData.message,
           ...(propertyId && { propiedad_id: propertyId }),
           ...(propertyTitle && { propiedad: propertyTitle }),
+          ...(propertySlug && { propiedad_slug: propertySlug }),
         },
       });
 

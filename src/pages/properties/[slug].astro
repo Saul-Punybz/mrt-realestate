@@ -170,7 +170,12 @@ const schemaData = {
               <h3 class="font-serif text-xl font-semibold text-navy-900 mb-4">
                 ¿Interesado en esta propiedad?
               </h3>
-              <ContactForm client:load propertyId={property.id} propertyTitle={property.title} />
+              <ContactForm
+                client:load
+                propertyId={property.id}
+                propertyTitle={property.title}
+                propertySlug={property.slug}
+              />
             </div>
 
             <!-- Map -->
