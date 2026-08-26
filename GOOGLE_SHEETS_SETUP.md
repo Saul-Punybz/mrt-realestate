@@ -338,8 +338,18 @@ function escapar(s) {
 
 - **Sale desde `saul@puny.bz`** (la cuenta que despliega el script), pero se presenta como
   **MRT Real Estate**, para que Marilyn reconozca que el lead viene de su propia pagina.
-  Gmail puede mostrar "via" o "en nombre de" — es normal y no se puede quitar sin configurar
-  un alias verificado.
+  Gmail puede mostrar "via" o "en nombre de" — es normal.
+
+- **El nombre "MRT Real Estate" SOLO aplica a los correos del script.** `name` es un parametro
+  por mensaje, no una configuracion de la cuenta. Los correos normales de Saul desde Gmail
+  siguen saliendo con su nombre de siempre. Lo unico que cambiaria eso seria editar
+  Gmail > Configuracion > Cuentas > "Enviar como" y renombrar la propia direccion — no hay
+  que hacerlo.
+
+- **Si algun dia se quita el "via puny.bz"** con un alias verificado de `mrtrealestate.com`:
+  el alias es inofensivo, pero **no ponerlo como direccion predeterminada**, porque entonces
+  los correos nuevos de Saul saldrian desde MRT por defecto. Como alias no-predeterminado se
+  elige cuando usarlo y todo lo demas sigue igual.
 - **Sin copia a Saul.** Decision del 26 ago 2026: el correo es solo para ella.
 - **Si el correo falla, el lead igual se guarda.** Por eso van en dos `try` separados y el
   guardado va primero. Nunca al reves.
