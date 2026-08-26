@@ -138,8 +138,13 @@ npm run build && vercel --prod
 
 # Notificacion por email a Marilyn
 
-Cada vez que entra un lead, que le llegue un correo. Todo desde el mismo Apps Script,
+Cada vez que entra un lead nuevo, le llega un correo. Todo desde el mismo Apps Script,
 sin SendGrid ni servicio externo.
+
+**Solo los nuevos.** El correo se manda dentro del `doPost`, que corre una sola vez por
+envio del formulario. **No hay ningun trigger que recorra la hoja**, asi que es imposible
+que mande correos por las filas viejas. Si alguien mas adelante añade un trigger de tipo
+`onOpen` o de tiempo que lea la hoja, se rompe esa garantia — no hacerlo.
 
 ## ⚠️ Lo que NO funciona
 
@@ -152,18 +157,33 @@ El correo hay que mandarlo desde el `doPost`, que es donde ya sabemos que entra 
 
 ## El codigo
 
-Reemplaza el `doPost` del Apps Script por este. Lo unico que cambia arriba son los correos.
+Reemplaza el `doPost` del Apps Script por este. El `doGet` se queda como esta.
 
 ```javascript
 // ── Configuracion ───────────────────────────────────────────────
-var AVISAR_A  = 'marilyn@mrtrealestate.com';  // quien recibe el aviso
-var COPIA_A   = 'saul@puny.bz';               // deja '' si no quieres copia
-var SITIO     = 'https://www.mrtrealestate.com';
+// El correo sale desde la cuenta que despliega el script (saul@puny.bz),
+// pero se presenta como MRT Real Estate para que Marilyn reconozca que
+// el lead viene de su propia pagina.
+var AVISAR_A   = 'marilyn@mrtrealestate.com';
+var REMITENTE  = 'MRT Real Estate';
+var SITIO      = 'https://www.mrtrealestate.com';
 
 var TITULOS = {
-  'contacto':           'Nuevo mensaje de contacto',
-  'consulta-propiedad': 'Consulta sobre una propiedad',
-  'co-broke':           'Registro de Co-Broke'
+  'contacto':           'Nuevo mensaje desde tu pagina',
+  'consulta-propiedad': 'Alguien pregunta por una de tus propiedades',
+  'co-broke':           'Un corredor se registro en Co-Broke'
+};
+
+// Como se rotula cada campo en el correo. Lo que no este aqui sale con
+// el nombre crudo, con los guiones bajos cambiados por espacios.
+var ETIQUETAS = {
+  timestamp: 'Fecha', nombre: 'Nombre', email: 'Email', telefono: 'Telefono',
+  mensaje: 'Mensaje', propiedad: 'Propiedad', propiedad_id: 'ID de propiedad',
+  broker_name: 'Corredor', broker_license: 'Licencia', broker_company: 'Compania',
+  broker_phone: 'Telefono del corredor', broker_email: 'Email del corredor',
+  client_name: 'Cliente', client_phone: 'Telefono del cliente',
+  prequalified: 'Precualificado', preferred_date: 'Fecha preferida', notes: 'Notas',
+  property_id: 'ID de propiedad'
 };
 
 function doPost(e) {
@@ -189,10 +209,10 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   }
 
-  // 2) Avisar por correo. En su propio try: si el correo falla, el lead YA
+  // 2) Avisarle a Marilyn. En su propio try: si el correo falla, el lead YA
   //    quedo guardado y no se pierde. Nunca al reves.
   try {
-    enviarAviso(sheetName, data);
+    avisarAMarilyn(sheetName, data);
   } catch (error) {
     console.error('Fallo el aviso por email: ' + error.message);
   }
@@ -202,89 +222,102 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function enviarAviso(sheetName, data) {
-  var titulo = TITULOS[sheetName] || 'Nuevo lead del website';
-  var nombre = data.nombre || data.broker_name || 'Sin nombre';
+function avisarAMarilyn(sheetName, data) {
+  var titulo = TITULOS[sheetName] || 'Nuevo lead desde tu pagina';
+  // En co-broke quien escribe es el corredor, no el cliente: va primero broker_name.
+  var nombre = data.nombre || data.broker_name || data.client_name || 'Sin nombre';
   var email  = data.email  || data.broker_email || '';
+  var tel    = data.telefono || data.broker_phone || data.client_phone || '';
 
   var asunto = titulo + ' — ' + nombre;
   if (data.propiedad) asunto += ' · ' + data.propiedad;
 
-  // Todos los campos que vinieron, en orden, menos los de control
   var filas = Object.keys(data)
     .filter(function (k) { return k !== 'sheet' && data[k] !== '' && data[k] != null; })
     .map(function (k) {
-      var etiqueta = k.replace(/_/g, ' ');
-      etiqueta = etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1);
+      var etiqueta = ETIQUETAS[k] || k.replace(/_/g, ' ');
       return '<tr>' +
-        '<td style="padding:6px 14px 6px 0;color:#6b7280;white-space:nowrap;vertical-align:top">' +
-          etiqueta + '</td>' +
-        '<td style="padding:6px 0;color:#111827">' + escapar(String(data[k])) + '</td>' +
+        '<td style="padding:7px 16px 7px 0;color:#6b7280;white-space:nowrap;vertical-align:top">' +
+          escapar(etiqueta) + '</td>' +
+        '<td style="padding:7px 0;color:#111827">' + escapar(String(data[k])) + '</td>' +
       '</tr>';
     })
     .join('');
 
+  var acciones = '';
+  if (email) {
+    acciones += '<a href="mailto:' + encodeURI(email) + '" ' +
+      'style="background:#c9a227;color:#fff;padding:11px 20px;border-radius:6px;' +
+      'text-decoration:none;display:inline-block;margin:0 8px 8px 0">Responder por email</a>';
+  }
+  if (tel) {
+    acciones += '<a href="tel:' + encodeURI(String(tel).replace(/[^0-9+]/g, '')) + '" ' +
+      'style="background:#1e2a44;color:#fff;padding:11px 20px;border-radius:6px;' +
+      'text-decoration:none;display:inline-block;margin:0 8px 8px 0">Llamar</a>';
+  }
+
   var html =
-    '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:560px">' +
-      '<p style="font-size:17px;margin:0 0 4px"><strong>' + titulo + '</strong></p>' +
-      '<p style="color:#6b7280;margin:0 0 18px">Desde ' + SITIO + '</p>' +
+    '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:560px;color:#111827">' +
+      '<p style="font-size:18px;margin:0 0 6px"><strong>Marilyn, ' +
+        titulo.charAt(0).toLowerCase() + titulo.slice(1) + '.</strong></p>' +
+      '<p style="color:#6b7280;margin:0 0 20px;font-size:14px">' +
+        'Esta persona escribio desde <a href="' + SITIO + '" style="color:#6b7280">mrtrealestate.com</a>. ' +
+        'Ya quedo guardada en tu hoja de leads.</p>' +
       '<table style="border-collapse:collapse;font-size:14px">' + filas + '</table>' +
-      (email
-        ? '<p style="margin:22px 0 0"><a href="mailto:' + email + '" ' +
-          'style="background:#c9a227;color:#fff;padding:10px 18px;border-radius:6px;' +
-          'text-decoration:none;display:inline-block">Responder a ' + nombre + '</a></p>'
-        : '') +
-      '<p style="color:#9ca3af;font-size:12px;margin:26px 0 0">' +
-        'Aviso automatico del website. El lead ya quedo guardado en la hoja ' +
-        '"' + sheetName + '".</p>' +
+      (acciones ? '<p style="margin:24px 0 0">' + acciones + '</p>' : '') +
+      '<p style="color:#9ca3af;font-size:12px;margin:28px 0 0;border-top:1px solid #e5e7eb;padding-top:14px">' +
+        'Aviso automatico de tu pagina. No hace falta responder este correo: ' +
+        'dale a Responder y le contestas directo a la persona.</p>' +
     '</div>';
 
-  var opciones = {
-    name: 'Website MRT Real Estate',
-    htmlBody: html
-  };
-  if (COPIA_A) opciones.cc = COPIA_A;
-  // Con esto, darle "Responder" en el correo le contesta al cliente directo.
-  if (email) opciones.replyTo = email;
-
-  MailApp.sendEmail(AVISAR_A, asunto, textoPlano(sheetName, data), opciones);
+  MailApp.sendEmail(AVISAR_A, asunto, textoPlano(titulo, data), {
+    name: REMITENTE,
+    htmlBody: html,
+    // Con esto, "Responder" le contesta al cliente, no al script.
+    replyTo: email || undefined
+  });
 }
 
-function textoPlano(sheetName, data) {
-  return (TITULOS[sheetName] || 'Nuevo lead') + '\n\n' +
+function textoPlano(titulo, data) {
+  return 'Marilyn, ' + titulo.charAt(0).toLowerCase() + titulo.slice(1) + '.\n' +
+    'Esta persona escribio desde mrtrealestate.com y ya quedo guardada en tu hoja.\n\n' +
     Object.keys(data)
       .filter(function (k) { return k !== 'sheet' && data[k]; })
-      .map(function (k) { return k.replace(/_/g, ' ') + ': ' + data[k]; })
+      .map(function (k) { return (ETIQUETAS[k] || k.replace(/_/g, ' ')) + ': ' + data[k]; })
       .join('\n');
 }
 
 function escapar(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 ```
 
-## Pasos
+## Pasos para activarlo
 
 1. Abre la hoja > **Extensiones > Apps Script**
 2. Reemplaza el `doPost` por el codigo de arriba (deja el `doGet` como esta)
 3. Guarda
 4. **Deploy > Manage deployments > el lapiz > Version: New version > Deploy**
-   Ojo: si creas un *New deployment* en vez de una version nueva, cambia la URL `/exec`
+
+   ⚠️ Ojo: si creas un **New deployment** en vez de una **New version**, cambia la URL `/exec`
    y hay que actualizarla en `src/services/sheets.ts` y `src/pages/co-broke.astro`.
-   **Usa "New version" y la URL se queda igual.**
+   Con "New version" la URL se queda igual y no hay que tocar el sitio.
 5. La primera vez Google pide autorizar el permiso de enviar correo. Autoriza.
-6. Prueba: envia el formulario de contacto del sitio y confirma que llega el correo.
+6. Prueba: envia el formulario de contacto del sitio y confirma que le llega.
 
 ## Detalles que importan
 
-- **El correo sale desde la cuenta que despliega el script** (`saul@puny.bz`), no desde
-  Marilyn. Si se quiere que salga como `info@mrtrealestate.com`, hay que tener ese correo
-  configurado como alias en ese Gmail y añadir `from: 'info@mrtrealestate.com'` a `opciones`.
+- **Sale desde `saul@puny.bz`** (la cuenta que despliega el script), pero se presenta como
+  **MRT Real Estate**, para que Marilyn reconozca que el lead viene de su propia pagina.
+  Gmail puede mostrar "via" o "en nombre de" — es normal y no se puede quitar sin configurar
+  un alias verificado.
+- **Sin copia a Saul.** Decision del 26 ago 2026: el correo es solo para ella.
 - **Si el correo falla, el lead igual se guarda.** Por eso van en dos `try` separados y el
   guardado va primero. Nunca al reves.
-- **`replyTo`** apunta al cliente: Marilyn le da "Responder" y le contesta directo, sin copiar
-  y pegar la direccion.
+- **`replyTo` apunta al cliente**, no al script: Marilyn le da "Responder" y le contesta
+  directo. El correo se lo dice explicitamente.
+- **Botones de accion:** Responder por email y Llamar, con el telefono ya limpio de guiones.
 - **Limite de Gmail:** 100 correos al dia con cuenta gratuita, 1,500 con Workspace. Muy por
   encima del volumen real (unos 11 leads en cinco meses).
 - **El spam tambien va a generar correos.** Los formularios no tienen honeypot ni reCAPTCHA.
-  Si empieza a molestar, eso es lo que hay que atender.
+  Si empieza a molestarle a Marilyn, eso es lo que hay que atender.
