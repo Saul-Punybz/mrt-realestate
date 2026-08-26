@@ -1,167 +1,184 @@
-# MRT Real Estate — Save Point (March 10, 2026)
+# MRT Real Estate — Save Point
 
-## Proyecto
-- **Sitio:** MRT Real Estate — mrtrealestate.com
-- **Tech:** Astro 5.16.6, React 19, Tailwind CSS v4, Vercel
-- **Ubicacion local:** `/Users/saulgonzalez/Downloads/mrt-realestate/`
-- **Dev server:** `npm run dev` → http://localhost:4321/
-- **Brokerage:** Blue Ribbon Real Estate LLC — Lic. E-405
-- **Contacto principal:** Marilyn Rivera — (787) 939-8739 — marilyn@mrtrealestate.com
-
-## Deployment
-- **GitHub:** https://github.com/Saul-Punybz/mrt-realestate
-- **Vercel:** https://mrt-realestate.vercel.app
-- **Vercel team:** example-pages-projects
-- **Deploy:** `vercel --prod` desde el directorio del proyecto
+> **Última sesión: 25 de agosto de 2026** — actualización del inventario y despliegue a producción.
+> Sesión anterior: 10 de marzo de 2026 (construcción del sitio).
+> Para continuar: **"CONTINUE MRT"**. Para refrescar el inventario: **"ACTUALIZA INVENTARIO MRT"**.
 
 ---
 
-## Completado
+## El cliente
 
-### Paginas (43 total, todas building OK)
-- [x] **Inicio** (`/`) — Hero, servicios, YouTube videos (3 embeds), ubicaciones, CTA
-- [x] **Propiedades** (`/properties`) — Listings exclusivos con filtros + sección de alquileres + MLS map portal con scroll protection
-- [x] **Vende tu Propiedad** (`/sell`) — Hero, formulario, proceso
-- [x] **Nosotros** (`/about`) — Equipo real con fotos: Marilyn, Arelis, Marla
-- [x] **Calculadoras** (`/calculators`) — Calculadora de hipoteca y ROI
-- [x] **Blog** (`/blog`) — 6 artículos con imágenes reales de listings
-- [x] **Contacto** (`/contact`) — Formulario, YouTube/Zillow/WhatsApp links
-- [x] **Co-Broke** (`/co-broke`) — Politica de cooperacion entre corredores
-- [x] **Showing** (`/showing`) — Solicitar visita, 3 pasos, contacto
-- [x] **EDI** (`/edi`) — Electronic Data Interchange info
-- [x] **Admin** (`/admin`) — Panel con settings, email, Google, MLS API (5 paginas)
-- [x] **22 Property Detail Pages** — Cada listing con galería, detalles, mapa, contacto
-- [x] **6 Blog Posts** — Guía compra, Act 60, zonas, hipoteca, Airbnb, mercado
+**MRT Real Estate, The Dealmaker** — corretaje de bienes raíces, zona norte de Puerto Rico
+(Arecibo, Utuado, Hatillo, Lares, Ciales, Camuy, Isabela, Barceloneta, Manatí, San Sebastián).
 
-### Datos Reales (110+ fotos)
-- [x] 22 listings extraídos de RealtyHD con fotos reales descargadas
-- [x] Fotos de equipo reales (Marilyn, Arelis, Marla)
-- [x] Blog usa fotos de listings reales (no Unsplash)
-- [x] Cero imágenes de Unsplash en todo el sitio
-
-### Últimos Cambios (Sesión Mar 10)
-- [x] **Footer rediseñado** — Banner dorado con Co-Broke/Showing/EDI prominentes, ciudades reales, social links reales
-- [x] **SearchBar actualizado** — Ciudades y tipos de propiedad reales de MRT
-- [x] **Blog images** — Reemplazadas todas las imágenes Unsplash por fotos de listings
-- [x] **Direcciones corregidas** — "San Juan" → "Arecibo" en todo el sitio (contact, sell, admin, BaseLayout schema)
-- [x] **Links rotos arreglados** — Removidos /privacy, /terms, href="#" placeholders
-- [x] **MLS Map portal** — Branded top/bottom bars con logo MRT, "En vivo" indicator, phone CTA
-- [x] **Scroll protection en MLS map** — Click-to-activate overlay, auto-deactivate al scrollear fuera, pointer-events:none por defecto. Resuelve el problema de quedar atrapado en el mapa.
-- [x] **PropertyFilters compactados** — Padding reducido, texto xs, beds/baths side-by-side, property types como chips, amenities removidos
-- [x] **Properties page layout** — Hero → Listings Grid (con filtros) → Alquileres → MLS Map → SEO content
-- [x] **Subido a GitHub** — Repo público Saul-Punybz/mrt-realestate
-- [x] **Desplegado a Vercel** — Build exitoso, 43 páginas, producción live
-
-### Equipo (About Page)
-- [x] **Marilyn Rivera** — Fundadora & Agente Principal (`/images/team/marilyn.jpeg`)
-- [x] **Arelis Gonzalez Estrada** — Agente & Inspectora, G&G Inspectors (`/images/team/arelis.jpeg`)
-- [x] **Marla Enid Fuster Lamourt** — Agente, Lic. C-20059 (`/images/team/marla.jpeg`)
+| | |
+|---|---|
+| **Contacto principal** | Marilyn Rivera Torres — Fundadora y Agente Principal |
+| **Teléfonos** | (787) 939-8739 · (787) 326-1547 |
+| **Email** | marilyn@mrtrealestate.com |
+| **Oficina** | 326 Calle José Olmo, Arecibo, PR 00612 |
+| **Brokerage** | Blue Ribbon Real Estate LLC — Lic. E-405 |
+| **Lic. Marilyn** | C19882 |
+| **Equipo** | Arelis González Estrada (agente e inspectora, G&G Inspectors) · Marla Enid Fuster Lamourt (agente, Lic. C-20059) · Eneth González |
 
 ---
 
-## Pendiente / Por Mejorar
+## Dónde vive todo
 
-### Alta Prioridad
-- [ ] **Custom domain** — Configurar mrtrealestate.com en Vercel (Settings > Domains)
-- [ ] **Verificar Xposure data-id:** El ID 659384 de InterfaceExpress. Verificar en admin.realtyhd.com
-- [ ] **Fotos de equipo** — Crop/resize para uniformidad
+| | |
+|---|---|
+| **Sitio en vivo** | https://www.mrtrealestate.com |
+| **Local** | `~/Downloads/_Projects/mrt-realestate/` |
+| **Repo** | https://github.com/Saul-Punybz/mrt-realestate (rama `main`) |
+| **Vercel** | proyecto `mrt-realestate`, team `example-pages-projects` |
+| **Deploy** | `vercel --prod` desde el directorio (⚠️ el repo **no** está conectado a git en Vercel) |
+| **Stack** | Astro 5.16.6 · React 19 · Tailwind v4 · Vercel |
+| **Dev** | `npm run dev` → http://localhost:4321/ |
 
-### Media Prioridad
-- [ ] **Blog content** — Los artículos son genéricos, necesitan contenido real
-- [ ] **Contact form backend** — Los formularios no envían emails (necesita SendGrid o similar)
-- [ ] **Search functionality** — El SearchBar del hero no es funcional
-- [ ] **Hero image** — Considerar imagen real de PR en vez de gradiente
-- [ ] **FeaturedProperties** — Conectar a MLS/Xposure en vez de data estática
+### Fuentes de datos del cliente
 
-### Baja Prioridad
-- [ ] **SEO meta tags** — Revisar OG images por página
-- [ ] **Logo real** — Se usa círculo dorado "MRT", considerar logo oficial
-- [ ] **Responsive testing** — Verificar mobile en todos los breakpoints
-- [ ] **Performance** — YouTube iframes pesan, considerar lazy load
-- [ ] **Accessibility** — Contraste, alt texts, focus states
-- [ ] **Estadísticas About** — "$500M+", "1,200+", etc. son placeholder
-- [ ] **Admin panel backend** — Settings pages sin backend funcional
+| | |
+|---|---|
+| **Feed del inventario (fuente de verdad)** | https://mrtrealestate.realtyhd.com/listings |
+| **Fichas MLS** | properties.listingspuertorico.com |
+| **Xposure/RealtyHD user ID** | 659384 |
+| **Portal MLS embebido** | properties.listingspuertorico.com/userId_659384 |
+| **YouTube** | @mrtrealestate1547 |
+| **Zillow** | /profile/MRT%20Real%20Estate |
+| **WhatsApp** | +1 787 939 8739 |
 
 ---
 
-## Estructura de Archivos Clave
+## Sesión del 25 de agosto de 2026 — actualización del inventario
+
+### El problema
+
+Marilyn se quejó de que el sitio **seguía anunciando casas ya vendidas**. Confirmado: el
+inventario era un archivo estático (`src/data/listings.ts`) congelado desde marzo. De las
+**21 propiedades publicadas como disponibles, solo 3 seguían activas**.
+
+Los clientes MLS que existían en `src/services/bridge-api.ts` y `src/services/simplyrets.ts`
+**nunca se conectaron** — no los importa ningún archivo y nunca se les consiguió credenciales.
+El panel `/admin/mls-api` solo guarda credenciales en el `localStorage` del navegador. Lo único
+vivo era el iframe del mapa MLS, que muestra las ~1,538 propiedades de toda la isla, no las de MRT.
+
+### Lo que se hizo
+
+Comparación contra el feed real de Marilyn (30 propiedades: 16 activas, 14 vendidas):
+
+- **5 vendidas** que seguían publicadas como disponibles → fuera de la parrilla
+  (MLS 63859, 63915, 63453, 61251, y el alquiler 63272)
+- **14 desaparecieron del feed** sin marcarse vendidas → `Off Market`.
+  **No se marcaron como vendidas porque no está confirmado.**
+- **13 propiedades nuevas** que el feed tenía y el sitio nunca mostró, con fotos reales del MLS
+  (126 fotos bajadas y comprimidas). Incluye el complejo comercial de **$1.85M en San Sebastián**
+  y las oficinas de **$699K en Manatí**.
+- **Corrección de precio:** "Two plots of land" ya no son $210,000 los dos juntos sino
+  **$95,000 cada uno por separado**.
+
+Las vendidas y fuera de mercado **conservan su página** con franja de aviso, `noindex` y
+`schema.org SoldOut` — no se rompe ningún enlace vivo ni resultado de Google.
+
+### Correcciones que salieron de usar data real
+
+- **Área interior.** El MLS **solo** publica área del solar, nunca interior. Antes el sitio
+  habría presentado el solar como área habitable. Ahora `squareFeet` queda en 0, el dato va en
+  `lotSize`, la tarjeta rotula "X ft² solar" y el detalle pone "—" en Interior.
+- **Filtros.** Municipios y tipos ahora salen del inventario real. La lista fija ofrecía San Juan,
+  Ponce y Vieques sin una sola propiedad, y **omitía Isabela, Manatí y San Sebastián**, donde sí hay.
+- **Multifamiliares.** El MLS los clasifica como "House"; ahora se detectan aparte.
+- **Estado en español.** El detalle mostraba "Active" en crudo.
+
+### Scripts nuevos — la próxima vez son 10 minutos
 
 ```
+scripts/fetch-inventory.mjs    baja el feed + fichas MLS -> inventory.json
+scripts/build-listings.mjs     genera src/data/listings.ts
+scripts/fetch-photos.mjs       baja y comprime las fotos que falten
+scripts/listings-manual.json   lo que no viene del feed (slugs, retiradas)
+scripts/README-INVENTARIO.md   ← instrucciones completas
+```
+
+**Recordatorio trimestral en el calendario de Saul**, desde el 25 de noviembre de 2026,
+repitiendo cada 3 meses.
+
+---
+
+## Pendientes
+
+### Alta prioridad
+
+- [ ] **Llamar a Marilyn por las 14 propiedades en `Off Market`.** Desaparecieron del feed sin
+      marcarse vendidas. Si alguna sigue en venta hay que devolverla; si se vendió, marcarla `Sold`.
+      Son: Solar 3,480 m², 1.33 Acres Wooded Lot, Fixer Upper Barceloneta, Finca 32 Acres Lares,
+      9 Acres Aguadilla, Casa Remodelada Ciales, Propiedad Histórica Utuado, Multi-Familiar
+      Sabana Hoyos, Finca Montaña Ciales, Casa Familiar Lares, Edificio Mixto Utuado, Casa
+      Flamboyan Gardens, Penthouse Guaynabo, Hacienda Iberia.
+- [ ] **Conectar el repo a Vercel.** Hoy los deploys salen del CLI desde la máquina de Saul.
+      Conectarlo es el paso previo para automatizar el refresco.
+- [ ] **La solución de fondo:** correr `fetch-inventory.mjs` dentro del build de Vercel con un
+      cron de reconstrucción y eliminar el paso manual. El script ya funciona; falta el cron.
+
+### Media prioridad
+
+- [ ] **Formularios sin backend** — contacto, co-broke y consulta de propiedad no envían email
+      (falta SendGrid o similar). Marilyn **no está recibiendo los leads del sitio**.
+- [ ] **SearchBar del hero no es funcional** y ofrece municipios sin inventario.
+- [ ] **Blog** — los 6 artículos son genéricos, sin contenido real.
+- [ ] **Estadísticas del About** ("500+", "98%") son placeholder.
+- [ ] **Verificar Xposure data-id** 659384 en admin.realtyhd.com.
+
+### Baja prioridad
+
+- [ ] Fotos del equipo sin uniformar (crop/resize).
+- [ ] Logo real en vez del círculo dorado "MRT".
+- [ ] Peso de las imágenes: `public/images/listings/` pesa ~66MB. Las de marzo (~39MB) nunca se
+      comprimieron; las nuevas sí.
+- [ ] YouTube iframes pesados, considerar lazy load.
+- [ ] Accesibilidad: contraste, alt texts, focus states.
+- [ ] Panel `/admin` sin backend funcional.
+
+---
+
+## Estructura del proyecto
+
+```
+scripts/                 # ← NUEVO: actualización del inventario
+  fetch-inventory.mjs
+  build-listings.mjs
+  fetch-photos.mjs
+  listings-manual.json
+  inventory.json
+  README-INVENTARIO.md
 src/
+  data/listings.ts       # GENERADO — no editar a mano
   pages/
-    index.astro          # Homepage
-    about.astro          # Nosotros + equipo
-    sell.astro           # Vende tu propiedad
-    contact.astro        # Contacto
-    calculators.astro    # Calculadoras
-    co-broke.astro       # Co-Broke policy
-    showing.astro        # Solicitar showing
-    edi.astro            # EDI info
-    properties/
-      index.astro        # Listings + MLS map portal
-      [slug].astro       # Property detail
-    blog/
-      index.astro        # Blog listing
-      [slug].astro       # Blog post
-    admin/               # Admin panel (5 pages)
-    api/                 # API routes (contact, property-inquiry)
+    index.astro
+    properties/index.astro     # parrilla + mapa MLS embebido
+    properties/[slug].astro    # detalle + franja de vendida/no disponible
+    blog/  admin/  api/
+    about · sell · contact · calculators · co-broke · showing · edi
   components/
-    common/
-      Header.astro       # Nav header (fixed)
-      Footer.astro       # Footer con banner dorado + social links
-    home/
-      Hero.astro         # Main hero
-      FeaturedProperties.tsx
-      SearchBar.tsx
-    properties/
-      PropertyFilters.tsx  # Filtros compactos
-      PropertyGrid.tsx     # Grid de listings
-      PropertyCard.tsx     # Card individual
-      PropertyGallery.tsx  # Galería de fotos
-      PropertyDetails.tsx  # Detalles de propiedad
-    forms/
-      ContactForm.tsx    # Formulario de contacto
-    calculators/
-      MortgageCalculator.tsx
-      ROICalculator.tsx
-  data/
-    listings.ts          # 22 listings con datos reales + fotos
-  layouts/
-    BaseLayout.astro     # Layout base (SEO, Schema.org)
-    AdminLayout.astro    # Layout admin
-  styles/
-    global.css           # Tailwind v4 theme (navy/gold)
-public/
-  images/
-    listings/            # 110+ fotos reales de propiedades (~39MB)
-    team/                # Fotos de equipo (3)
+    properties/  PropertyCard · PropertyGrid · PropertyFilters
+                 PropertyGallery · PropertyDetails · PropertyMap
+    home/  Hero · FeaturedProperties · SearchBar · Stats
+    common/  Header · Navigation · Footer
+    forms/ · calculators/
+  services/
+    bridge-api.ts        # escrito, SIN USAR — nunca hubo credenciales
+    simplyrets.ts        # escrito, SIN USAR
+    sheets.ts · email.ts
+  layouts/  BaseLayout (soporta noindex) · PropertyLayout · BlogLayout · AdminLayout
+public/images/listings/  # ~236 fotos
 ```
 
 ---
 
-## Credenciales / IDs
-- **Xposure/RealtyHD user ID:** 659384
-- **MLS Portal:** properties.listingspuertorico.com/userId_659384
-- **YouTube:** @mrtrealestate1547
-- **Zillow:** /profile/MRT%20Real%20Estate
-- **WhatsApp:** +17879398739
-- **Brokerage:** Blue Ribbon Real Estate LLC — Lic. E-405
-- **Marla Lic.:** C-20059
-
----
-
-## Como Continuar
+## Cómo continuar
 
 ```bash
-cd /Users/saulgonzalez/Downloads/mrt-realestate
-npm run dev
-# Abre http://localhost:4321/
+cd ~/Downloads/_Projects/mrt-realestate
+npm run dev          # http://localhost:4321/
 ```
 
-Para deploy a Vercel:
-```bash
-cd /Users/saulgonzalez/Downloads/mrt-realestate
-vercel --prod
-```
-
-Para continuar con Claude Code, di: **"CONTINUE MRT"** y lee este archivo.
+Para actualizar el inventario, leer `scripts/README-INVENTARIO.md` y correr los cuatro comandos.
