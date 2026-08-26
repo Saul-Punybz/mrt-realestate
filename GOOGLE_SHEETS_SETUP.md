@@ -209,9 +209,13 @@ function doPost(e) {
 
     sheet.appendRow(headers.map(function (h) { return data[h] || ''; }));
 
-    // Enlace directo a la pestaña donde acaba de caer el lead, no a la
-    // hoja en general. Marilyn abre el correo y cae en la fila correcta.
-    hojaUrl = ss.getUrl() + '#gid=' + sheet.getSheetId();
+    // Enlace directo a la pestaña donde acaba de caer el lead, no a la hoja
+    // en general. El gid va DOS veces a proposito: Gmail pasa los enlaces por
+    // su redirector y en el camino se come el fragmento #gid=..., asi que el
+    // ?gid= es el que de verdad abre la pestaña correcta.
+    var gid = sheet.getSheetId();
+    hojaUrl = ss.getUrl().split('#')[0].split('?')[0].replace(/\/edit$/, '') +
+      '/edit?gid=' + gid + '#gid=' + gid;
   } catch (error) {
     return ContentService
       .createTextOutput(JSON.stringify({ success: false, error: error.message }))
@@ -236,7 +240,6 @@ function avisarAMarilyn(sheetName, data, hojaUrl) {
   // En co-broke quien escribe es el corredor, no el cliente.
   var nombre = data.nombre || data.broker_name || data.client_name || 'Sin nombre';
   var email  = data.email  || data.broker_email || '';
-  var tel    = data.telefono || data.broker_phone || data.client_phone || '';
 
   var asunto = titulo + ' — ' + nombre;
   if (data.propiedad) asunto += ' · ' + data.propiedad;
@@ -256,17 +259,8 @@ function avisarAMarilyn(sheetName, data, hojaUrl) {
     })
     .join('');
 
-  var boton = function (href, texto, fondo) {
-    return '<a href="' + href + '" style="background:' + fondo + ';color:#fff;' +
-      'padding:11px 20px;border-radius:6px;text-decoration:none;display:inline-block;' +
-      'margin:0 8px 8px 0;font-size:14px">' + texto + '</a>';
-  };
-
-  var acciones = '';
-  if (email) acciones += boton('mailto:' + encodeURI(email), 'Responder por email', '#c9a227');
-  if (tel)   acciones += boton('tel:' + encodeURI(String(tel).replace(/[^0-9+]/g, '')), 'Llamar', '#1e2a44');
-
-  // Enlaces secundarios. La hoja va SIEMPRE, para que pueda entrar desde el correo.
+  // Sin botones de responder ni llamar: el correo y el telefono ya salen en la
+  // tabla de arriba, y para contestar basta con darle Responder en Gmail.
   var enlaces = [];
   if (data.propiedad_slug) {
     enlaces.push('<a href="' + SITIO + '/properties/' + encodeURIComponent(data.propiedad_slug) +
@@ -284,9 +278,8 @@ function avisarAMarilyn(sheetName, data, hojaUrl) {
         'Esta persona escribió desde <a href="' + SITIO + '" style="color:#6b7280">mrtrealestate.com</a>. ' +
         'Ya quedó guardada en tu hoja de leads.</p>' +
       '<table style="border-collapse:collapse;font-size:14px">' + filas + '</table>' +
-      (acciones ? '<p style="margin:24px 0 0">' + acciones + '</p>' : '') +
       (enlaces.length
-        ? '<p style="margin:14px 0 0;font-size:14px">' + enlaces.join('&nbsp;&nbsp;·&nbsp;&nbsp;') + '</p>'
+        ? '<p style="margin:24px 0 0;font-size:14px">' + enlaces.join('&nbsp;&nbsp;·&nbsp;&nbsp;') + '</p>'
         : '') +
       '<p style="color:#9ca3af;font-size:12px;margin:28px 0 0;border-top:1px solid #e5e7eb;padding-top:14px">' +
         'Aviso automático de tu página. No hace falta responder este correo: ' +
