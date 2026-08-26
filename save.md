@@ -121,14 +121,19 @@ repitiendo cada 3 meses.
 
 ### Media prioridad
 
-- [ ] **⚠️ Marilyn no tiene acceso a la hoja de leads. Lo más urgente que hay abierto.**
-      Los formularios **sí funcionan** — llevan capturando leads desde marzo vía Google Apps Script.
-      El problema es de permisos: la hoja **"MRT Real Estate - Formularios"**
-      (`1PUg1_Ci5jev21vo8kMeiGXWCgSF0JVCdh5OW4vu2Hck`) tiene **una sola** persona con acceso,
-      `saul@puny.bz` como owner. Marilyn no aparece. Lo que se le envió fue una copia, y una copia
-      queda desconectada: el Apps Script está bound a esta hoja, así que todo cae aquí.
-      **Arreglo:** compartirle ESTA hoja (no una copia) y activar notificaciones por email en
-      Herramientas → Reglas de notificación. **Hay 11 leads reales sin atender.**
+- [ ] **Anti-spam en los formularios.** No tienen ninguno: en la hoja hay 4 envíos idénticos de
+      "harrison brooks", uno de una agencia web y dos con nombres generados. Vale un honeypot
+      o reCAPTCHA.
+- [ ] **Notificaciones de la hoja de leads.** Verificar si están activas (Herramientas → Reglas
+      de notificación). Sin eso, hay que acordarse de abrir la hoja.
+
+**Los formularios FUNCIONAN — no tocarlos "para arreglarlos".** Capturan a la hoja
+**"MRT Real Estate - Formularios"** (`1PUg1_Ci5jev21vo8kMeiGXWCgSF0JVCdh5OW4vu2Hck`) vía Google
+Apps Script y llevan haciéndolo sin fallar desde marzo de 2026. Verificado el 26 ago con envíos
+de prueba. Marilyn tiene acceso y la está usando (confirmado por Saul; ojo, la API de permisos
+de Drive solo devuelve a `saul@puny.bz` como owner — probablemente hereda de una unidad
+compartida). Los `src/pages/api/*` que apuntan a SendGrid son código muerto: el formulario no
+los usa.
 - [ ] **SearchBar del hero no es funcional** y ofrece municipios sin inventario.
 - [ ] **Blog** — los 6 artículos son genéricos, sin contenido real.
 - [ ] **Estadísticas del About** ("500+", "98%") son placeholder.
