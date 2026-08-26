@@ -106,14 +106,18 @@ repitiendo cada 3 meses.
 
 ## Pendientes
 
+### Decidido el 26 ago 2026 — no reabrir
+
+- **Las 14 propiedades en `Off Market` se quedan como están.** Fuera de la parrilla y sin marcar
+  como vendidas, que es la posición segura: el sitio no anuncia nada sin confirmar. Si Marilyn
+  pide devolver alguna, se hace en dos minutos.
+- **Los leads son de Marilyn, no de Puny.bz.** Llegan a la hoja y ella la usa. **No hacer
+  seguimiento de leads ni sugerirlo.**
+- **Anti-spam: a mejoras futuras.** Entra spam a la hoja (envíos repetidos de bots). No urgente,
+  no bloquea nada. Se atiende cuando se vuelva a tocar el sitio.
+
 ### Alta prioridad
 
-- [ ] **Llamar a Marilyn por las 14 propiedades en `Off Market`.** Desaparecieron del feed sin
-      marcarse vendidas. Si alguna sigue en venta hay que devolverla; si se vendió, marcarla `Sold`.
-      Son: Solar 3,480 m², 1.33 Acres Wooded Lot, Fixer Upper Barceloneta, Finca 32 Acres Lares,
-      9 Acres Aguadilla, Casa Remodelada Ciales, Propiedad Histórica Utuado, Multi-Familiar
-      Sabana Hoyos, Finca Montaña Ciales, Casa Familiar Lares, Edificio Mixto Utuado, Casa
-      Flamboyan Gardens, Penthouse Guaynabo, Hacienda Iberia.
 - [ ] **Conectar el repo a Vercel.** Hoy los deploys salen del CLI desde la máquina de Saul.
       Conectarlo es el paso previo para automatizar el refresco.
 - [ ] **La solución de fondo:** correr `fetch-inventory.mjs` dentro del build de Vercel con un
@@ -121,11 +125,14 @@ repitiendo cada 3 meses.
 
 ### Media prioridad
 
-- [ ] **Anti-spam en los formularios.** No tienen ninguno: en la hoja hay 4 envíos idénticos de
-      "harrison brooks", uno de una agencia web y dos con nombres generados. Vale un honeypot
-      o reCAPTCHA.
-- [ ] **Notificaciones de la hoja de leads.** Verificar si están activas (Herramientas → Reglas
-      de notificación). Sin eso, hay que acordarse de abrir la hoja.
+- [ ] **SearchBar del hero no es funcional** y ofrece municipios sin inventario.
+- [ ] **Blog** — los 6 artículos son genéricos, sin contenido real.
+- [ ] **Estadísticas del About** ("500+", "98%") son placeholder.
+- [ ] **Verificar Xposure data-id** 659384 en admin.realtyhd.com.
+
+---
+
+## Formularios y leads — no tocar
 
 **Los formularios FUNCIONAN — no tocarlos "para arreglarlos".** Capturan a la hoja
 **"MRT Real Estate - Formularios"** (`1PUg1_Ci5jev21vo8kMeiGXWCgSF0JVCdh5OW4vu2Hck`) vía Google
@@ -134,10 +141,13 @@ de prueba. Marilyn tiene acceso y la está usando (confirmado por Saul; ojo, la 
 de Drive solo devuelve a `saul@puny.bz` como owner — probablemente hereda de una unidad
 compartida). Los `src/pages/api/*` que apuntan a SendGrid son código muerto: el formulario no
 los usa.
-- [ ] **SearchBar del hero no es funcional** y ofrece municipios sin inventario.
-- [ ] **Blog** — los 6 artículos son genéricos, sin contenido real.
-- [ ] **Estadísticas del About** ("500+", "98%") son placeholder.
-- [ ] **Verificar Xposure data-id** 659384 en admin.realtyhd.com.
+
+**Atender los leads es trabajo de Marilyn.** No se les da seguimiento desde aquí.
+
+Higiene pendiente: borrar las filas 14, 15 y 16 de la pestaña `contacto` — son pruebas de
+diagnóstico del 26 ago, dicen "PRUEBA Claude".
+
+---
 
 ### Baja prioridad
 
