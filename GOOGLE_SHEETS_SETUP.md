@@ -6,8 +6,9 @@
 > de prueba. Hoja: **MRT Real Estate - Formularios**
 > (`1PUg1_Ci5jev21vo8kMeiGXWCgSF0JVCdh5OW4vu2Hck`).
 >
-> **Para añadir el aviso por email a Marilyn, ver la seccion "Notificacion por email"
-> al final de este documento.**
+> **El aviso por email a Marilyn esta ACTIVO** desde el 27 ago 2026 (Apps Script Version 6).
+> Cada formulario que alguien llena en mrtrealestate.com le llega automaticamente a
+> `marilyn@mrtrealestate.com`. Ver la seccion "Notificacion por email" al final.
 
 ### Paso 1: Crear el Google Sheet
 
@@ -313,6 +314,18 @@ function escapar(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 ```
+
+## ⚠️ Si vas a probar, cuidado con AVISAR_A
+
+Para probar sin molestar a Marilyn se cambia `AVISAR_A` a `saul@puny.bz`, se despliega, se
+prueba, y se devuelve a `marilyn@mrtrealestate.com` con otro deploy.
+
+**El error facil de cometer:** pegar el archivo completo del repo encima del editor RESTAURA
+`AVISAR_A` a marilyn, porque asi esta en el repo. Paso el 26 ago 2026: se pego el archivo, se
+desplego, y dos correos de prueba le llegaron a la clienta — uno de ellos con los datos reales
+de un prospecto, que ella pudo haber llamado.
+
+**Regla:** despues de pegar, ANTES de desplegar, mirar la linea 5 y confirmar a quien apunta.
 
 ## Pasos para activarlo
 
